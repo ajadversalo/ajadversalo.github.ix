@@ -40,7 +40,7 @@
 
 .hi {
     color: #FFF;
-    transition: color 0.2s;
+/*    transition: color 0.2s;*/
 }
 
 .hi:hover {
@@ -56,9 +56,10 @@
     /*transform: translateX(-10%);*/
 }
 
-.parentX .hi {
-    color: #FFF;
-}
+    .parentX .hi {
+        color: #FFF;
+        transition: color 0.5s ease 0.1s;
+    }
 
 .parentX:hover .hi{
     color: transparent;
@@ -69,12 +70,12 @@
 }
 
 .parentX:hover .name {
-    margin-left: -500px;
+    margin-left: -250px;
 }
 
 .parentX .period {
     color: #FFF;
-    transition: color 0.3s;
+    transition: color 0.2s;
 }
 
 .parentX:hover .period {
@@ -83,12 +84,21 @@
 
 .parentX .im {
     color: #FFF;
-    transition: color 0.3s ease-in 0.1s;
+    transition: color 0.2s ease-in 0.1s;
 }
 
 .parentX:hover  .im {
     color: transparent;
 }
+
+    .parentX .ln {
+        opacity: 0;
+        transition: opacity 0.2s ease-in 0.2s;
+    }
+
+    .parentX:hover .ln {
+        opacity: 100%;
+    }
 
     .line1::after {
         content: "";
