@@ -38,7 +38,57 @@
     overflow: hidden;
 }
 
+.hi {
+    color: #FFF;
+    transition: color 0.2s;
+}
 
+.hi:hover {
+    /*color: transparent*/
+}
+
+.parentX {
+    color: #FFF;
+    /*display: block;*/
+}
+
+.parentX:hover {
+    /*transform: translateX(-10%);*/
+}
+
+.parentX .hi {
+    color: #FFF;
+}
+
+.parentX:hover .hi{
+    color: transparent;
+}
+
+.parentX .name {
+    transition: margin-left 0.4s ease-in 0.1s;
+}
+
+.parentX:hover .name {
+    margin-left: -500px;
+}
+
+.parentX .period {
+    color: #FFF;
+    transition: color 0.3s;
+}
+
+.parentX:hover .period {
+    color: transparent;
+}
+
+.parentX .im {
+    color: #FFF;
+    transition: color 0.3s ease-in 0.1s;
+}
+
+.parentX:hover  .im {
+    color: transparent;
+}
 
     .line1::after {
         content: "";
@@ -57,18 +107,6 @@
         animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
     }
 
-
-/*
-
-@keyframes drop {
-    0% {
-        top: -50%;
-    }
-
-    100% {
-        top: 110%;
-    }
-}*/ /**/
 
 @keyframes drop {
     0% {
