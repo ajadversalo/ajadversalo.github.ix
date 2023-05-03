@@ -75,6 +75,14 @@ const useStyles = makeStyles()(() => ({
         flexDirection: 'column',
         paddingTop: '7rem',
         paddingLeft: '1rem'
+    },
+    iconRootNarrow: {
+        color: '#FFF',
+        display: 'flex',
+        flexDirection: 'row',
+        paddingTop: '7rem',
+        width: '100%',
+        justifyContent: 'space-around'
     }
 }));
 
@@ -108,7 +116,7 @@ function App() {
                 </div>               
             </div>
             <div>
-                <div className={classes.iconRoot}>
+                <div className={isSm ? classes.iconRootNarrow : classes.iconRoot}>
                     <IconButton style={{width: '2rem'}}>{<LinkedInIcon style={{fill: '#FFF'}} />}</IconButton>
                     <IconButton style={{ width: '2rem' }}>{<GitHubIcon style={{ fill: '#FFF' }} />}</IconButton>
                 </div>
