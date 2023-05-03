@@ -1,121 +1,115 @@
+body {
+    font-family:'Trebuchet MS'
+}
+
 .App {
     text-align: center;
-    background: linear-gradient(90deg, rgba(19,64,116,1) 0%, rgba(19,49,92,1) 58%, rgba(11,37,69,1) 100%, rgba(33,39,87,1) 100%);
+    /*background: linear-gradient(90deg, rgba(19,64,116,1) 0%, rgba(19,49,92,1) 58%, rgba(11,37,69,1) 100%, rgba(33,39,87,1) 100%);*/
     height: 100vh;
+    background-color: #023047;
 }
 
-.App-logo {
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #282c34;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-.line1 {
+.line {
     position: absolute;
     width: 1px;
     height: 100%;
     top: 0;
-    left: 5%;
-    background: rgba(255, 255, 255, 0.1);
+    /*background: rgba(255, 255, 255, 0.1);*/
     overflow: hidden;
 }
 
-.hi {
+.button {
+    border-radius: 2px;
+    transition: all 0.2s;
+    padding: 0 1rem 0.3rem 1rem;
+    color: #FFC857;
+    font-size: 1.4rem;
+}
+
+.button:hover {
+    color: #2F4858;
+    background-color: #FFF;
+}
+
+.heading {
     color: #FFF;
-/*    transition: color 0.2s;*/
 }
 
-.hi:hover {
-    /*color: transparent*/
+.heading .hi {
+    transition: color 0.5s ease 0.1s;
 }
 
-.parentX {
-    color: #FFF;
-    /*display: block;*/
-}
-
-.parentX:hover {
-    /*transform: translateX(-10%);*/
-}
-
-    .parentX .hi {
-        color: #FFF;
-        transition: color 0.5s ease 0.1s;
-    }
-
-.parentX:hover .hi{
+.heading:hover .hi{
     color: transparent;
 }
 
-.parentX .name {
+.heading .name {
     transition: margin-left 0.4s ease-in 0.1s;
 }
 
-.parentX:hover .name {
+.heading:hover .name {
     margin-left: -250px;
 }
 
-.parentX .period {
+.heading .period {
     color: #FFF;
     transition: color 0.2s;
 }
 
-.parentX:hover .period {
+.heading:hover .period {
     color: transparent;
 }
 
-.parentX .im {
+.heading .im {
     color: #FFF;
     transition: color 0.2s ease-in 0.1s;
 }
 
-.parentX:hover  .im {
+.heading:hover .im {
     color: transparent;
 }
 
-    .parentX .ln {
-        opacity: 0;
-        transition: opacity 0.2s ease-in 0.2s;
-    }
+.heading .ln {
+    opacity: 0;
+    transition: opacity 0.2s ease-in 0.2s;
+}
 
-    .parentX:hover .ln {
-        opacity: 100%;
-    }
+.heading:hover .ln {
+    opacity: 100%;
+}
 
-    .line1::after {
-        content: "";
-        display: block;
-        position: absolute;
-        height: 15vh;
-        width: 100%;
-        top: -50%;
-        left: 0;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
-        -webkit-animation: drop 7s 0s infinite;
-        animation: drop 7s 0s infinite;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-        animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-    }
+.line::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 15vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+    -webkit-animation: drop 7s 0s infinite;
+    animation: drop 7s 0s infinite;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.delay {
+
+}
+
+.delay::after {
+    animation-delay: 2.5s;
+}
+
+.resumeButton {
+
+}
+
+.resumeButton:hover {
+    border: 2px solid #FFF !important;
+}
 
 
 @keyframes drop {
