@@ -48,13 +48,12 @@ const useStyles = makeStyles()(() => ({
     buttonRootNarrow: {
         color: '#FFF',
         fontSize: '2rem',
-        paddingTop: '1rem',
         width: '100%',
         float: 'right',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-evenly',        
-        paddingTop: '3rem'
+        paddingTop: '1.5rem'
     },
     //button: {
     //    paddingBottom: '0.5rem',
