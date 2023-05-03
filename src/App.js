@@ -13,7 +13,8 @@ const useStyles = makeStyles()(() => ({
         textAlign: 'center',
         /*background: 'linear-gradient(#7286A0, #2F4858)',*/
         height: '100vh',
-        backgroundColor: '#023047'
+        backgroundColor: '#023047',
+        minWidth: '18rem'
     },
     title: {
         fontSize: '5rem',
@@ -28,7 +29,7 @@ const useStyles = makeStyles()(() => ({
         //paddingTop: '15rem',
         color: '#FFF',
         maxWidth: '40rem',
-        minWidth: '20rem',
+        minWidth: '15rem',
         textAlign: 'left',
         margin: '0 auto',
         padding: '13rem 2rem 0 2rem'
@@ -70,14 +71,15 @@ const useStyles = makeStyles()(() => ({
     },
     iconRoot: {
         color: '#FFF',
-        position: 'absolute',
         bottom: 0,
         paddingTop: '1rem',
         paddingLeft: '1rem',
         display: 'flex',
         flexDirection: 'column',
         paddingBottom: '2rem',
-        paddingLeft: '2rem'
+        paddingLeft: '2rem',        
+        width: '2rem',
+        marginTop: '-8rem'
     }
 }));
 
@@ -111,10 +113,10 @@ function App() {
                 </div>               
             </div>
             <div>
-            <div className={classes.iconRoot}>
-                    <IconButton>{<LinkedInIcon style={{fill: '#FFF'}} />}</IconButton>
-                    <IconButton>{<GitHubIcon style={{ fill: '#FFF' }} />}</IconButton>
-            </div>
+                <div className={classes.iconRoot}>
+                        <IconButton>{<LinkedInIcon style={{fill: '#FFF'}} />}</IconButton>
+                        <IconButton>{<GitHubIcon style={{ fill: '#FFF' }} />}</IconButton>
+                </div>
             </div>
         </div>
     );
