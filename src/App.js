@@ -1,6 +1,12 @@
+import React, { useEffect } from 'react';
 import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const useStyles = makeStyles()(() => ({
     root: {
@@ -25,20 +31,30 @@ const useStyles = makeStyles()(() => ({
         minWidth: '20rem',
         textAlign: 'left',
         margin: '0 auto',
-        padding: '13rem 1rem 0 1rem'
+        padding: '13rem 2rem 0 2rem'
     },
     buttonRoot: {
         color: '#FFF',
         fontSize: '2rem',
-        paddingTop: '1rem',
-        width: '10rem',
+        width: '8rem',
         float: 'right',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        paddingRight: '2rem',
         paddingTop: '3rem',
-        height: '10rem'
+        height: '10rem',
+        paddingRight: '1rem'
+    },
+    buttonRootNarrow: {
+        color: '#FFF',
+        fontSize: '2rem',
+        paddingTop: '1rem',
+        width: '100%',
+        float: 'right',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',        
+        paddingTop: '3rem'
     },
     //button: {
     //    paddingBottom: '0.5rem',
@@ -51,16 +67,33 @@ const useStyles = makeStyles()(() => ({
     //},
     heading: {
         color: '#FFF',
+    },
+    iconRoot: {
+        color: '#FFF',
+        position: 'absolute',
+        bottom: 0,
+        paddingTop: '1rem',
+        paddingLeft: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        paddingBottom: '2rem',
+        paddingLeft: '2rem'
     }
 }));
 
 function App() {
     const { classes } = useStyles();
+    const theme = useTheme();
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+
+    useEffect(() => {    
+        console.log('isSm', isSm)
+    }, [isSm])
 
     return (
         <div className={classes.root} >
             <div>
-                <div className={classes.buttonRoot}>
+                <div className={isSm ? classes.buttonRootNarrow : classes.buttonRoot}>
                     <div className='button'>About</div>
                     <div className='button'>Work</div>
                     <div className='button'>Contact</div>
@@ -77,7 +110,12 @@ function App() {
                     </div>
                 </div>               
             </div>
-            
+            <div>
+            <div className={classes.iconRoot}>
+                    <IconButton>{<LinkedInIcon style={{fill: '#FFF'}} />}</IconButton>
+                    <IconButton>{<GitHubIcon style={{ fill: '#FFF' }} />}</IconButton>
+            </div>
+            </div>
         </div>
     );
 }
