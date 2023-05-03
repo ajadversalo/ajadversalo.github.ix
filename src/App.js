@@ -104,7 +104,7 @@ function App() {
             </div>
             <div className="line delay" style={{left: '98%'}}></div>
             <div style={{height: '100%'}}>
-                <div className={classes.headingRoot} style={{paddingTop: isSm ? '9rem' : '13rem'}}>                  
+                <div className={classes.headingRoot} style={{paddingTop: isSm ? '7rem' : '13rem'}}>                  
                     <div style={{ fontSize: 'calc(0.5rem + 1vw)', color: '#CCDBDC', fontWeight: 600}}>Hi There! I'm</div>
                     <div style={{ fontSize: 'calc(2rem + 2vw)', padding: '1rem 0' }}>AJ Adversalo</div>                                     
                     <div style={{ fontSize: 'calc(1rem + 1vw)', color: '#CCDBDC' }}>I'm a full-stack software developer passionate in creating robust, user-friendly web applications that make a difference.</div>                         
