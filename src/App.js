@@ -103,7 +103,7 @@ function App() {
     const theme = useTheme();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [page, setPage] = useState('');
 
     return (
