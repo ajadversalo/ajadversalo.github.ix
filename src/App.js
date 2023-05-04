@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
@@ -7,13 +7,14 @@ import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 const useStyles = makeStyles()(() => ({
     root: {
         textAlign: 'center',
         /*background: 'linear-gradient(#7286A0, #2F4858)',*/
        // height: '100vh',
-        backgroundColor: '#023047',
+        //backgroundColor: '#023047',
         minWidth: '18rem'
     },
     title: {
@@ -89,6 +90,8 @@ function App() {
     const theme = useTheme();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const [open, setOpen] = useState(true);
+
     useEffect(() => {    
         console.log('isSm', isSm)
     }, [isSm])
@@ -116,9 +119,22 @@ function App() {
             <div>
                 <div className={isSm ? classes.iconRootNarrow : classes.iconRoot}>
                     <IconButton style={{width: '2rem'}}>{<LinkedInIcon style={{fill: '#FFF'}} />}</IconButton>
-                    <IconButton style={{ width: '2rem' }}>{<GitHubIcon style={{ fill: '#FFF' }} />}</IconButton>
+                    <IconButton 
+                        style={{ width: '2rem' }}
+                        onClick={()=>setOpen(true)}
+                    >
+                        {<GitHubIcon style={{ fill: '#FFF' }} />}
+                    </IconButton>
                 </div>
             </div>
+            <SwipeableDrawer
+                anchor={'right'}
+                open={open}
+                onClose={()=>{setOpen(false)}}
+                onOpen={()=>{setOpen(true)}}
+            >
+                <div style={{maxWidth: '90vw', minWidth: '50vw'}}></div>                
+          </SwipeableDrawer>
         </div>
     );
 }
