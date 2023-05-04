@@ -9,7 +9,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Avatar from '@mui/material/Avatar';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import CloseIcon from '@mui/icons-material/Close';
 
 const useStyles = makeStyles()(() => ({
     root: {
@@ -146,7 +146,7 @@ function App() {
                 <div className={isSm ? classes.drawerNarrow : classes.drawer} >
                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                         <Avatar alt="Remy Sharp" src="face.jfif" />
-                        <IconButton onClick={()=>{setOpen(false); setPage('');}}>{<KeyboardArrowDownIcon/>}</IconButton>
+                        <IconButton onClick={()=>{setOpen(false); setPage('');}}>{<CloseIcon/>}</IconButton>
                     </div>
                     <h1>More about me...</h1>
                     <p>Hi, I'm AJ, I'm a full-stack developer based in beautiful Vancouver, British Columbia.
