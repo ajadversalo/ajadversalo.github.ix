@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
@@ -133,7 +133,7 @@ function App() {
 
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState('');
-
+    
     const form = useRef();
 
     const About = () => {
@@ -168,6 +168,15 @@ function App() {
     }
 
     const Contact = () => {
+        const [fromName, setFromName] = useState('');
+        const [fromEmail, setFromEmail] = useState('');
+
+        const handleInputChange = (e) => {
+
+            setFromName(e.target.value);
+        
+    }
+    
         return(
             <>
                 <div className={classes.contactInfoRoot}>            
@@ -186,15 +195,18 @@ function App() {
                     </div>
                 </div>
                 <div style={{paddingTop: '1rem', width: '100%'}}>
-                    {/*
-                    <TextField 
+                    <TextField
+                        name='from-name' 
                         label="Your Name" 
                         required
                         className={classes.textBox}
+                        value={fromName}
+                        onChange={handleInputChange}
                     />
                     <TextField
                         label="Your Email" 
-                        required 
+                        required
+                        value={fromEmail} 
                         className={classes.textBox}
                     />
                     <TextField 
@@ -210,16 +222,14 @@ function App() {
                           }}
                     />
                     <div className={classes.buttonSendRoot}>
-                        <Button>Send</Button>
+                        <Button onClick={handleButtonSend}>Send</Button>
                     </div>
-                        */}
-                    <form ref={form} onSubmit={handleSendEmail}>
+                    <form ref={form} onSubmit={handleSendEmail} style={{visibility: 'hidden'}}>
                           <label>Name</label>
-                          <input type='text' name='from_name'/>
-                          <input type='text' name='message'/>
-                          <input type='submit' value='Send'/>
+                          <input type='text' name='from_name' onChange={()=>{}} />
+                          <input type='text' name='message' onChange={()=>{}}/>
+                          <input id='button_send' type='submit' value='Send'/>
                     </form>
-                    <h1>Test</h1>
                 </div>
             </>
         );
@@ -240,14 +250,23 @@ function App() {
             // Service Id: service_0cl4yjf
             // Template Id: template_c2ne7jm
             // Public key: ajonPi_KH7jk3zPCW
-            emailjs.sendForm('service_0cl4yjf', 'template_c2ne7jm', form.current, 'ajonPi_KH7jk3zPCW')
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+            // emailjs.sendForm('service_0cl4yjf', 'template_c2ne7jm', form.current, 'ajonPi_KH7jk3zPCW')
+            // .then((result) => {
+            //     console.log(result.text);
+            // }, (error) => {
+            //     console.log(error.text);
+            // });
+            console.log('x')
         }
     }
+
+    const handleButtonSend = (e) => {
+        console.log('yo')
+        let buttonSend = document.getElementById('button_send');
+        buttonSend.click();
+    }
+
+    
 
     return (
         <div className={classes.root} >
@@ -257,11 +276,6 @@ function App() {
                     <div className='button' onClick={()=>{setOpen(true); setPage('projects')}}>Projects</div>
                     <div className='button' onClick={()=>{setOpen(true); setPage('contact')}}>Contact Me</div>
                 </div>
-                <form ref={form} onSubmit={handleSendEmail}>
-                          <label>Name</label>
-                          <input type='text' name='user_name'/>
-                          <input type='submit' value='Send'/>
-                    </form>
             </div>
             <div className="line delay" style={{left: '98%'}}></div>
             <div style={{height: '100%'}}>
