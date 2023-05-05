@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
@@ -10,6 +10,12 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
+import HomeIcon from '@mui/icons-material/Home';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import EmailIcon from '@mui/icons-material/Email';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import emailjs from 'emailjs-com';
 
 const useStyles = makeStyles()(() => ({
     root: {
@@ -87,14 +93,36 @@ const useStyles = makeStyles()(() => ({
     },
     drawer: {
         padding: '1rem',
-        backgroundColor: '#EEE5E9',
         height: '100%',
         width: '25rem'
     },
     drawerNarrow: {
         padding: '1rem',
-        backgroundColor: '#EEE5E9',
         height: '100%'
+    },
+    contactInfoRoot: {
+        width: '16rem',
+        paddingTop: '2rem'
+    }, 
+    contactInfoItem: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    contactInfoItemValue: {
+        textAlign: 'left',
+        width: '100%',
+        paddingLeft: '1rem'
+    },
+    textBox: {
+        width: '100%',
+        margin: '0.5rem 0',
+        backgroundColor: '#FFF'
+    },
+    buttonSendRoot: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'end'
     }
 }));
 
@@ -105,6 +133,8 @@ function App() {
 
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState('');
+
+    const form = useRef();
 
     const About = () => {
         return(
@@ -139,8 +169,58 @@ function App() {
 
     const Contact = () => {
         return(
-            <>            
-                <h1>Projects</h1>
+            <>
+                <div className={classes.contactInfoRoot}>            
+                    <h1>Contact Me</h1>
+                    <div className={classes.contactInfoItem}>
+                        <HomeIcon/>
+                        <Typography className={classes.contactInfoItemValue}>28-16016 82 Ave. Surrey, BC</Typography>
+                    </div>
+                    <div className={classes.contactInfoItem}>
+                        <LocalPhoneIcon/>
+                        <Typography className={classes.contactInfoItemValue}>604-3582787</Typography>
+                    </div>
+                    <div className={classes.contactInfoItem}>
+                        <EmailIcon/>
+                        <Typography className={classes.contactInfoItemValue}>ajadvers@gmail.com</Typography>
+                    </div>
+                </div>
+                <div style={{paddingTop: '1rem', width: '100%'}}>
+                    {/*
+                    <TextField 
+                        label="Your Name" 
+                        required
+                        className={classes.textBox}
+                    />
+                    <TextField
+                        label="Your Email" 
+                        required 
+                        className={classes.textBox}
+                    />
+                    <TextField 
+                        label="Your Message" 
+                        required 
+                        className={classes.textBox}
+                        multiline
+                        maxRows={4}
+                        inputProps={{
+                            style: {
+                              height: "5rem",
+                            },
+                          }}
+                    />
+                    <div className={classes.buttonSendRoot}>
+                        <Button>Send</Button>
+                    </div>
+                        */}
+                    <form ref={form} onSubmit={handleSendEmail}>
+                          <label>Name</label>
+                          <input type='text' name='from_name'/>
+                          <input type='text' name='message'/>
+                          <input type='submit' value='Send'/>
+                    </form>
+                    <h1>Test</h1>
+                </div>
             </>
         );
     }
@@ -153,14 +233,35 @@ function App() {
         );
     }
 
+    const handleSendEmail = (e) => {
+        if(e){
+            e.preventDefault();
+            console.log('form.current', form.current)
+            // Service Id: service_0cl4yjf
+            // Template Id: template_c2ne7jm
+            // Public key: ajonPi_KH7jk3zPCW
+            emailjs.sendForm('service_0cl4yjf', 'template_c2ne7jm', form.current, 'ajonPi_KH7jk3zPCW')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+        }
+    }
+
     return (
         <div className={classes.root} >
             <div>
                 <div className={isSm ? classes.buttonRootNarrow : classes.buttonRoot}>
                     <div className='button' onClick={()=>{setOpen(true); setPage('about')}}>About</div>
                     <div className='button' onClick={()=>{setOpen(true); setPage('projects')}}>Projects</div>
-                    <div className='button' onClick={()=>{setOpen(true); setPage('contact')}}>Contact</div>
+                    <div className='button' onClick={()=>{setOpen(true); setPage('contact')}}>Contact Me</div>
                 </div>
+                <form ref={form} onSubmit={handleSendEmail}>
+                          <label>Name</label>
+                          <input type='text' name='user_name'/>
+                          <input type='submit' value='Send'/>
+                    </form>
             </div>
             <div className="line delay" style={{left: '98%'}}></div>
             <div style={{height: '100%'}}>
