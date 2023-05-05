@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
@@ -106,13 +106,60 @@ function App() {
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState('');
 
+    const About = () => {
+        return(
+            <div style={{paddingTop: '2rem'}}>            
+                <Avatar alt="AJ Adversalo" src="face.jfif" />
+                <h1>More about me...</h1>
+                <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
+                    opportinities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
+                    A month after completing the program in 2019, I was lucky enough to be hired at GenXys Healthcare Systems as a full-stack developer.</p>
+                <p>As a software developer, one of my key strengths is my attention to detail. I firmly believe that the little things 
+                    matter, and I always strive to ensure that my code is clean, well-organized, and easy to maintain. Whether it be front-end 
+                    or back-end I always find ways to optimize code and improve my skills in the process.</p>    
+                <p>Outside of work, I enjoy photography taking snaps here and there especially wide open sceneries.</p>
+                <p>I strive to continue and keep learning new languages, frameworks and technologies to broaden my skills and be a better developer in general.
+                If you're interested in working with me, please don't hesitate to get in touch!
+                </p>
+            </div>
+        );
+    }
+
+    useEffect(() => {
+        document.title ='AJ - Full-Stack Dev';
+    }, []);
+
+    const Projects = () => {
+        return(
+            <>            
+                <h1>Projects</h1>
+            </>
+        );
+    }
+
+    const Contact = () => {
+        return(
+            <>            
+                <h1>Projects</h1>
+            </>
+        );
+    }
+
+    const Resume = () => {
+        return(
+            <>            
+                <h1>Resume</h1>
+            </>
+        );
+    }
+
     return (
         <div className={classes.root} >
             <div>
                 <div className={isSm ? classes.buttonRootNarrow : classes.buttonRoot}>
                     <div className='button' onClick={()=>{setOpen(true); setPage('about')}}>About</div>
-                    <div className='button'>Work</div>
-                    <div className='button'>Contact</div>
+                    <div className='button' onClick={()=>{setOpen(true); setPage('projects')}}>Projects</div>
+                    <div className='button' onClick={()=>{setOpen(true); setPage('contact')}}>Contact</div>
                 </div>
             </div>
             <div className="line delay" style={{left: '98%'}}></div>
@@ -122,18 +169,21 @@ function App() {
                     <div style={{ fontSize: 'calc(2rem + 2vw)', padding: '1rem 0' }}>AJ Adversalo</div>                                     
                     <div style={{ fontSize: 'calc(1rem + 1vw)', color: '#CCDBDC' }}>I'm a full-stack software developer passionate in creating robust, user-friendly web applications that make a difference.</div>                         
                     <div style={{ paddingTop: '2rem' }}>
-                        <Button className='resumeButton' style={{ padding: '0.5rem 1rem', color: '#FFF', border: '1px solid #FFF' }}>Resume</Button>
+                        <Button 
+                            className='resumeButton' 
+                            style={{ padding: '0.5rem 1rem', color: '#FFF', border: '1px solid #FFF' }}
+                            onClick={()=>{setOpen(true); setPage('resume')}}
+                        >
+                                Resume
+                        </Button>
                     </div>
                 </div>               
             </div>
             <div>
                 <div className={isSm ? classes.iconRootNarrow : classes.iconRoot}>
-                    <IconButton style={{width: '2rem'}}>{<LinkedInIcon style={{fill: '#FFF'}} />}</IconButton>
-                    <IconButton 
-                        style={{ width: '2rem' }}
-                        onClick={()=>setOpen(true)}
-                    >
-                        {<GitHubIcon style={{ fill: '#FFF' }} />}
+                    <IconButton style={{width: '2rem'}} onClick={() => window.open('https://www.linkedin.com/in/ajadversalo', '_blank')}>{<LinkedInIcon style={{fill: '#FFF'}} />}</IconButton>
+                    <IconButton style={{ width: '2rem' }}>
+                        {<GitHubIcon onClick={()=>window.open('https://github.com/ajadversalo', '_blank')} style={{ fill: '#FFF' }} />}
                     </IconButton>
                 </div>
             </div>
@@ -144,15 +194,16 @@ function App() {
                 onOpen={()=>{setOpen(true)}}
             >
                 <div className={isSm ? classes.drawerNarrow : classes.drawer} >
-                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <Avatar alt="Remy Sharp" src="face.jfif" />
-                        <IconButton onClick={()=>{setOpen(false); setPage('');}}>{<CloseIcon/>}</IconButton>
-                    </div>
-                    <h1>More about me...</h1>
-                    <p>Hi, I'm AJ, I'm a full-stack developer based in beautiful Vancouver, British Columbia.
-                        I have 4 years experience building responsive web applications. </p>
-                    <p>One of my key strengths as a developer is my attention to detail. I firmly believe that the little things matter, and I always strive to ensure that my code is clean, well-organized, and easy to maintain. Whether it be front-end or back-end I always find ways to optimize code and improve my skills in the process.</p>    
-                    <p>If you're looking for a meticulous and detail-oriented full-stack developer to help you bring your vision to life, I'd love to hear from you.</p>          
+                    <IconButton 
+                        onClick={()=>{setOpen(false); setPage('');}}
+                        style={{float: 'right'}}
+                    >
+                        {<CloseIcon/>}
+                    </IconButton>
+                    { page === 'about' && <About /> }
+                    { page === 'projects' && <Projects /> }
+                    { page === 'contact' && <Contact/> }
+                    { page === 'resume' && <Resume/> }
                 </div>                
           </SwipeableDrawer>
         </div>
