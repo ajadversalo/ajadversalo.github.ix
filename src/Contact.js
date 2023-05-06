@@ -139,7 +139,7 @@ function Contact(props) {
                         style: {
                             height: "5rem",
                         },
-                        }}
+                    }}
                     value={message}
                     onChange={handleInputChange}
                 />
