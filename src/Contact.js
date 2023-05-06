@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
 import HomeIcon from '@mui/icons-material/Home';
@@ -35,14 +35,18 @@ const useStyles = makeStyles()(() => ({
     }
 }));
 
-
-function Contact() {
+function Contact(props) {
+    const { openErrorMsg, setOpenErrorMsg, openSuccessMsg, setOpenSuccessMsg, setOpen } = props;
     const { classes } = useStyles();
     const form = useRef();
 
     const [fromName, setFromName] = useState('');
     const [fromEmail, setFromEmail] = useState('');
     const [message, setMessage] = useState('');
+    
+    useEffect(() => {
+        setOpenErrorMsg(true);
+    }, []);
 
     const handleInputChange = (e) => {
         if(e){
@@ -71,15 +75,21 @@ function Contact() {
         if(e){
             e.preventDefault();
             console.log('form.current', form.current)
-            // Service Id: service_0cl4yjf
-            // Template Id: template_c2ne7jm
-            // Public key: ajonPi_KH7jk3zPCW
-            // emailjs.sendForm('service_0cl4yjf', 'template_c2ne7jm', form.current, 'ajonPi_KH7jk3zPCW')
-            // .then((result) => {
-            //     console.log(result.text);
-            // }, (error) => {
-            //     console.log(error.text);
-            // });
+            /* -------------------------------------
+                Service Id: service_0cl4yjf
+                Template Id: template_c2ne7jm
+                 Public key: ajonPi_KH7jk3zPCW
+            ------------------------------------- */ 
+            emailjs.sendForm('service_0cl4yjf', 'template_c2ne7jm', form.current, 'ajonPi_KH7jk3zPCW')
+            .then((result) => {
+                console.log(result.text);
+                if(result.text){
+                    setOpenSuccessMsg(true);
+                    setOpen(false);
+                }
+            }, (error) => {
+                console.log(error.text);
+            });
             console.log('x')
         }
     }
@@ -94,7 +104,7 @@ function Contact() {
                 </div>
                 <div className={classes.contactInfoItem}>
                     <LocalPhoneIcon/>
-                    <Typography className={classes.contactInfoItemValue}>(604)358-2787</Typography>
+                    <Typography className={classes.contactInfoItemValue}>(604) 358-2787</Typography>
                 </div>
                 <div className={classes.contactInfoItem}>
                     <EmailIcon/>
@@ -141,7 +151,7 @@ function Contact() {
                     <div><input type='text' name='from_email' onChange={()=>{}} value={fromEmail}/></div>
                     <div><input type='text' name='message' onChange={()=>{}} value={message}/></div>
                     <div><input id='button_send' type='submit' value='Send'/></div>                                                    
-                </form>
+                </form>                
             </div>
         </>
     );
