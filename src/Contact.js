@@ -74,7 +74,6 @@ function Contact(props) {
     const handleSendEmail = (e) => {
         if(e){
             e.preventDefault();
-            console.log('form.current', form.current)
             /* -------------------------------------
                 Service Id: service_0cl4yjf
                 Template Id: template_c2ne7jm
