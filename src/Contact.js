@@ -36,7 +36,7 @@ const useStyles = makeStyles()(() => ({
 }));
 
 function Contact(props) {
-    const { openErrorMsg, setOpenErrorMsg, openSuccessMsg, setOpenSuccessMsg, setOpen } = props;
+    const { setOpenErrorMsg, setOpenSuccessMsg, setOpen } = props;
     const { classes } = useStyles();
     const form = useRef();
 
@@ -90,7 +90,6 @@ function Contact(props) {
             }, (error) => {
                 console.log(error.text);
             });
-            console.log('x')
         }
     }
 
