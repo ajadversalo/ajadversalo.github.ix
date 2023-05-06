@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
@@ -10,12 +10,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
-import HomeIcon from '@mui/icons-material/Home';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import EmailIcon from '@mui/icons-material/Email';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import emailjs from 'emailjs-com';
+import Contact from './Contact';
 
 const useStyles = makeStyles()(() => ({
     root: {
@@ -99,30 +94,6 @@ const useStyles = makeStyles()(() => ({
     drawerNarrow: {
         padding: '1rem',
         height: '100%'
-    },
-    contactInfoRoot: {
-        width: '16rem',
-        paddingTop: '2rem'
-    }, 
-    contactInfoItem: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    contactInfoItemValue: {
-        textAlign: 'left',
-        width: '100%',
-        paddingLeft: '1rem'
-    },
-    textBox: {
-        width: '100%',
-        margin: '0.5rem 0',
-        backgroundColor: '#FFF'
-    },
-    buttonSendRoot: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'end'
     }
 }));
 
@@ -134,8 +105,6 @@ function App() {
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState('');
     
-    const form = useRef();
-
     const About = () => {
         return(
             <div style={{paddingTop: '2rem'}}>            
@@ -149,7 +118,7 @@ function App() {
                     or back-end I always find ways to optimize code and improve my skills in the process.</p>    
                 <p>Outside of work, I enjoy photography taking snaps here and there especially wide open sceneries.</p>
                 <p>I strive to continue and keep learning new languages, frameworks and technologies to broaden my skills and be a better developer in general.
-                If you're interested in working with me, please don't hesitate to get in touch!
+                    If you're interested in working with me, please don't hesitate to get in touch!
                 </p>
             </div>
         );
@@ -166,75 +135,7 @@ function App() {
             </>
         );
     }
-
-    const Contact = () => {
-        const [fromName, setFromName] = useState('');
-        const [fromEmail, setFromEmail] = useState('');
-
-        const handleInputChange = (e) => {
-
-            setFromName(e.target.value);
-        
-    }
     
-        return(
-            <>
-                <div className={classes.contactInfoRoot}>            
-                    <h1>Contact Me</h1>
-                    <div className={classes.contactInfoItem}>
-                        <HomeIcon/>
-                        <Typography className={classes.contactInfoItemValue}>28-16016 82 Ave. Surrey, BC</Typography>
-                    </div>
-                    <div className={classes.contactInfoItem}>
-                        <LocalPhoneIcon/>
-                        <Typography className={classes.contactInfoItemValue}>604-3582787</Typography>
-                    </div>
-                    <div className={classes.contactInfoItem}>
-                        <EmailIcon/>
-                        <Typography className={classes.contactInfoItemValue}>ajadvers@gmail.com</Typography>
-                    </div>
-                </div>
-                <div style={{paddingTop: '1rem', width: '100%'}}>
-                    <TextField
-                        name='from-name' 
-                        label="Your Name" 
-                        required
-                        className={classes.textBox}
-                        value={fromName}
-                        onChange={handleInputChange}
-                    />
-                    <TextField
-                        label="Your Email" 
-                        required
-                        value={fromEmail} 
-                        className={classes.textBox}
-                    />
-                    <TextField 
-                        label="Your Message" 
-                        required 
-                        className={classes.textBox}
-                        multiline
-                        maxRows={4}
-                        inputProps={{
-                            style: {
-                              height: "5rem",
-                            },
-                          }}
-                    />
-                    <div className={classes.buttonSendRoot}>
-                        <Button onClick={handleButtonSend}>Send</Button>
-                    </div>
-                    <form ref={form} onSubmit={handleSendEmail} style={{visibility: 'hidden'}}>
-                          <label>Name</label>
-                          <input type='text' name='from_name' onChange={()=>{}} />
-                          <input type='text' name='message' onChange={()=>{}}/>
-                          <input id='button_send' type='submit' value='Send'/>
-                    </form>
-                </div>
-            </>
-        );
-    }
-
     const Resume = () => {
         return(
             <>            
@@ -242,31 +143,6 @@ function App() {
             </>
         );
     }
-
-    const handleSendEmail = (e) => {
-        if(e){
-            e.preventDefault();
-            console.log('form.current', form.current)
-            // Service Id: service_0cl4yjf
-            // Template Id: template_c2ne7jm
-            // Public key: ajonPi_KH7jk3zPCW
-            // emailjs.sendForm('service_0cl4yjf', 'template_c2ne7jm', form.current, 'ajonPi_KH7jk3zPCW')
-            // .then((result) => {
-            //     console.log(result.text);
-            // }, (error) => {
-            //     console.log(error.text);
-            // });
-            console.log('x')
-        }
-    }
-
-    const handleButtonSend = (e) => {
-        console.log('yo')
-        let buttonSend = document.getElementById('button_send');
-        buttonSend.click();
-    }
-
-    
 
     return (
         <div className={classes.root} >
@@ -296,9 +172,11 @@ function App() {
             </div>
             <div>
                 <div className={isSm ? classes.iconRootNarrow : classes.iconRoot}>
-                    <IconButton style={{width: '2rem'}} onClick={() => window.open('https://www.linkedin.com/in/ajadversalo', '_blank')}>{<LinkedInIcon style={{fill: '#FFF'}} />}</IconButton>
-                    <IconButton style={{ width: '2rem' }}>
-                        {<GitHubIcon onClick={()=>window.open('https://github.com/ajadversalo', '_blank')} style={{ fill: '#FFF' }} />}
+                    <IconButton style={{width: '2rem'}} onClick={() => window.open('https://www.linkedin.com/in/ajadversalo', '_blank')}>
+                        {<LinkedInIcon style={{fill: '#FFF'}} />}
+                    </IconButton>
+                    <IconButton style={{ width: '2rem' }} onClick={()=>window.open('https://github.com/ajadversalo', '_blank')}>
+                        {<GitHubIcon style={{ fill: '#FFF' }} />}
                     </IconButton>
                 </div>
             </div>
