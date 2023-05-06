@@ -13,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Contact from './Contact';
 
 import Snackbar from '@mui/material/Snackbar';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 
 const useStyles = makeStyles()(() => ({
     root: {

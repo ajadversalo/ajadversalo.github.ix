@@ -46,7 +46,7 @@ function Contact(props) {
     
     useEffect(() => {
         setOpenErrorMsg(true);
-    }, []);
+    }, [setOpenErrorMsg]);
 
     const handleInputChange = (e) => {
         if(e){
