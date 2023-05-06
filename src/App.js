@@ -113,7 +113,7 @@ function App() {
     const About = () => {
         return(
             <div style={{paddingTop: '2rem'}}>            
-                <Avatar alt="AJ Adversalo" src="face.jfif" />
+                <Avatar alt="A.J. Adversalo" src="face.jfif" />
                 <h1>More about me...</h1>
                 <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
                     opportinities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
