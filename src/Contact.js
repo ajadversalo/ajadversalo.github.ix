@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
 import HomeIcon from '@mui/icons-material/Home';
@@ -36,7 +36,7 @@ const useStyles = makeStyles()(() => ({
 }));
 
 function Contact(props) {
-    const { setOpenErrorMsg, setOpenSuccessMsg, setOpen } = props;
+    const { setOpen, setPopupMsgType, setPopupMsg, setOpenPopup } = props;
     const { classes } = useStyles();
     const form = useRef();
 
@@ -44,10 +44,6 @@ function Contact(props) {
     const [fromEmail, setFromEmail] = useState('');
     const [message, setMessage] = useState('');
     
-    useEffect(() => {
-        setOpenErrorMsg(true);
-    }, [setOpenErrorMsg]);
-
     const handleInputChange = (e) => {
         if(e){
             switch(e.target?.name){                    
@@ -66,14 +62,40 @@ function Contact(props) {
         }            
     }
 
-    const handleButtonSend = (e) => {
-        let buttonSend = document.getElementById('button_send');
-        buttonSend.click();
-    }
+    const handleButtonSend = useCallback(() => {
+        const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; // eslint-disable-line
+        let popupMsgType = '';
+        let popupMsg = '';
+        
+        if(!fromName || !fromEmail || !message){            
+            popupMsgType = 'error';
+            popupMsg = 'Unable to send. Some fields are empty.';
+        }
+        
+        if(fromName && fromEmail && message && !emailPattern.test(fromEmail)){            
+            popupMsgType = 'error';
+            popupMsg = 'Unable to send. Email address is invalid.';
+        }
+
+        if(popupMsgType && popupMsg){
+            setPopupMsgType(popupMsgType);
+            setPopupMsg(popupMsg);
+            setOpenPopup(true);
+        }
+
+        if(fromName && fromEmail && message && emailPattern.test(fromEmail)){            
+            let buttonSend = document.getElementById('button_send');
+            if(buttonSend){
+                buttonSend.click();
+            }
+        }
+                
+    }, [fromName, fromEmail, message, setPopupMsgType, setPopupMsg, setOpenPopup]);
 
     const handleSendEmail = (e) => {
         if(e){
             e.preventDefault();
+            console.log('handleSendEmail',handleSendEmail);
             /* -------------------------------------
                 Service Id: service_0cl4yjf
                 Template Id: template_c2ne7jm
@@ -83,11 +105,16 @@ function Contact(props) {
             .then((result) => {
                 console.log(result.text);
                 if(result.text){
-                    setOpenSuccessMsg(true);
+                    setPopupMsgType('success');
+                    setPopupMsg('Message successfully sent!');
+                    setOpenPopup(true);
                     setOpen(false);
                 }
             }, (error) => {
                 console.log(error.text);
+                setPopupMsgType('error');
+                setPopupMsg(error.text);
+                setOpenPopup(true);
             });
         }
     }
@@ -144,6 +171,7 @@ function Contact(props) {
                 <div className={classes.buttonSendRoot}>
                     <Button onClick={handleButtonSend}>Send</Button>
                 </div>
+                {/* Hidden. Required by emailjs, values are mapped to state. */}
                 <form ref={form} onSubmit={handleSendEmail} style={{visibility: 'hidden'}}>
                     <div><input type='text' name='from_name' onChange={()=>{}} value={fromName}/></div>
                     <div><input type='text' name='from_email' onChange={()=>{}} value={fromEmail}/></div>

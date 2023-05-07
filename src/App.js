@@ -11,7 +11,6 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 import Contact from './Contact';
-
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
@@ -32,7 +31,6 @@ const useStyles = makeStyles()(() => ({
         fontSize: '3rem'
     },
     headingRoot: {
-        textAlign: 'center',
         color: '#FFF',
         maxWidth: '40rem',
         minWidth: '15rem',
@@ -107,8 +105,9 @@ function App() {
 
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState('');
-    const [openErrorMsg, setOpenErrorMsg] = useState(false);
-    const [openSuccessMsg, setOpenSuccessMsg] = useState(false);
+    const [popupMsg, setPopupMsg] = useState('');
+    const [popupMsgType, setPopupMsgType] = useState('error');
+    const [openPopup, setOpenPopup] = useState(false);
     
     const About = () => {
         return(
@@ -149,12 +148,8 @@ function App() {
         );
     }
 
-    const handleCloseErrorMsg = () => {
-        setOpenErrorMsg(false);
-    }
-
-    const handleCloseSuccessMsg = () => {
-        setOpenSuccessMsg(false);
+    const handleClosePopup = () => {
+        setOpenPopup(false);
     }
 
     return (
@@ -208,23 +203,28 @@ function App() {
                     { page === 'about' && <About /> }
                     { page === 'projects' && <Projects /> }
                     { page === 'contact' && 
-                        <Contact 
-                            openErrorMsg={openErrorMsg} 
-                            openSuccessMsg={openSuccessMsg} 
-                            setOpenErrorMsg={setOpenErrorMsg}
-                            setOpenSuccessMsg={setOpenSuccessMsg}
+                        <Contact                             
+                            setOpenPopup={setOpenPopup}
+                            setPopupMsg={setPopupMsg}
+                            setPopupMsgType={setPopupMsgType}
                             setOpen={setOpen}
                         /> 
                     }
                     { page === 'resume' && <Resume/> }
                 </div>                
           </SwipeableDrawer>
-            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} open={openErrorMsg} autoHideDuration={5000} onClose={handleCloseErrorMsg}>
-                <MuiAlert severity='error' variant='filled' onClose={handleCloseErrorMsg}>This is an error message!</MuiAlert>
-            </Snackbar>
-            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} open={openSuccessMsg} autoHideDuration={5000} onClose={handleCloseSuccessMsg}>
-                <MuiAlert severity='success' variant='filled' onClose={handleCloseSuccessMsg}>Your message has been successfully sent!</MuiAlert>
-            </Snackbar>
+          <Snackbar 
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} 
+            open={openPopup} 
+            autoHideDuration={5000} 
+            onClose={handleClosePopup}>
+                <MuiAlert 
+                    severity={popupMsgType} 
+                    variant='filled' 
+                    onClose={handleClosePopup}>
+                        {popupMsg}
+                </MuiAlert>
+          </Snackbar>
         </div>
     );
 }
