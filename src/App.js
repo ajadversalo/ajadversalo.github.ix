@@ -11,6 +11,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 import Contact from './Contact';
+import Resume from './Resume';
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -164,14 +165,6 @@ function App() {
         );
     }
     
-    const Resume = () => {
-        return(
-            <>            
-                <h1>Resume</h1>
-            </>
-        );
-    }
-
     const handleClosePopup = () => {
         setOpenPopup(false);
     }
