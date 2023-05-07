@@ -11,6 +11,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 import Contact from './Contact';
+
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
@@ -73,8 +74,6 @@ const useStyles = makeStyles()(() => ({
         color: '#FFF',
     },
     iconRoot: {
-        position: 'absolute',
-        bottom: 0,
         color: '#FFF',
         display: 'flex',
         flexDirection: 'column',
@@ -82,8 +81,6 @@ const useStyles = makeStyles()(() => ({
         paddingLeft: '1rem'
     },
     iconRootNarrow: {
-        position: 'absolute',
-        bottom: 0,
         color: '#FFF',
         display: 'flex',
         flexDirection: 'row',
@@ -112,6 +109,7 @@ function App() {
     const [popupMsg, setPopupMsg] = useState('');
     const [popupMsgType, setPopupMsgType] = useState('error');
     const [openPopup, setOpenPopup] = useState(false);
+    const [height, setHeight] = useState(window.innerHeight);
     
     const About = () => {
         return(
@@ -135,6 +133,28 @@ function App() {
     useEffect(() => {
         document.title ='AJ - Full-Stack Dev';
     }, []);
+
+    const getHeight = () => window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    useEffect(() => {
+        const resizeListener = () => {
+
+            setHeight(getHeight())
+          };
+
+          window.addEventListener('resize', resizeListener);
+
+          return () => {
+            // remove resize listener
+            window.removeEventListener('resize', resizeListener);
+          }
+    },[]);
+
+    useEffect(() => {
+        if(height){
+            console.log('height', height)
+        }
+    }, [height])
 
     const Projects = () => {
         return(
@@ -182,7 +202,7 @@ function App() {
                 </div>               
             </div>
             <div>
-                <div className={isSm ? classes.iconRootNarrow : classes.iconRoot}>
+                <div className={isSm ? classes.iconRootNarrow : classes.iconRoot} style={height < 600 ? { position: 'relative', paddingTop: '2rem'} : {position: 'absolute', bottom: 15}}>
                     <IconButton style={{width: '2rem'}} onClick={() => window.open('https://www.linkedin.com/in/ajadversalo', '_blank')}>
                         {<LinkedInIcon style={{fill: '#FFF'}} />}
                     </IconButton>
