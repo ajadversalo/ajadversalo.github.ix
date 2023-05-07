@@ -202,7 +202,7 @@ function App() {
                 </div>               
             </div>
             <div>
-                <div className={isSm ? classes.iconRootNarrow : classes.iconRoot} style={height < 600 ? { position: 'relative', paddingTop: '2rem'} : {position: 'absolute', bottom: 15}}>
+                <div className={isSm ? classes.iconRootNarrow : classes.iconRoot} style={height < 550 ? { position: 'relative', paddingTop: '2rem'} : {position: 'absolute', bottom: 15}}>
                     <IconButton style={{width: '2rem'}} onClick={() => window.open('https://www.linkedin.com/in/ajadversalo', '_blank')}>
                         {<LinkedInIcon style={{fill: '#FFF'}} />}
                     </IconButton>
