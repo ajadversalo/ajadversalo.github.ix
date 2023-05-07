@@ -73,6 +73,8 @@ const useStyles = makeStyles()(() => ({
         color: '#FFF',
     },
     iconRoot: {
+        position: 'absolute',
+        bottom: 0,
         color: '#FFF',
         display: 'flex',
         flexDirection: 'column',
@@ -80,6 +82,8 @@ const useStyles = makeStyles()(() => ({
         paddingLeft: '1rem'
     },
     iconRootNarrow: {
+        position: 'absolute',
+        bottom: 0,
         color: '#FFF',
         display: 'flex',
         flexDirection: 'row',
