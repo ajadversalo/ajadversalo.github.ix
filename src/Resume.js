@@ -2,6 +2,8 @@ import React, { useState, useRef, useCallback } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import { Document, Page } from 'react-pdf';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 const useStyles = makeStyles()(() => ({
     root: {
@@ -79,6 +81,8 @@ const useStyles = makeStyles()(() => ({
 function Resume(props) {
     const {  } = props;
     const { classes } = useStyles();
+    const theme = useTheme();
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'));
 
     const ref = React.createRef();
 
@@ -91,7 +95,7 @@ function Resume(props) {
           
             <div style={{height: '4rem'}} /> 
             */}
-            <iframe src='AJAdversalo-FullStack.pdf'style={{width: '50rem', height: '50rem', overflow: 'hidden'}} />
+            <iframe src='AJAdversalo-FullStack.pdf'style={isSm ? {width: '30rem', height: '50rem', overflow: 'hidden'} : {width: '50rem', height: '50rem', overflow: 'hidden'}} />
             {/*
             <div className={classes.paper} ref={ref}>
                 <div style={{textAlign: 'center'}}>
