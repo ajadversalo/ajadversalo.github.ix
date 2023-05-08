@@ -12,6 +12,7 @@ import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 import Contact from './Contact';
 import Resume from './Resume';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -90,13 +91,15 @@ const useStyles = makeStyles()(() => ({
         justifyContent: 'space-around'
     },
     drawer: {
-        padding: '1rem',
+        //padding: '1rem',
         height: '100%',
-        width: '25rem'
+        width: '25rem',
+        //backgroundColor: 'red'
     },
     drawerNarrow: {
-        padding: '1rem',
-        height: '100%'
+        //padding: '1rem',
+        height: '100%',
+        //backgroundColor: 'red'
     }
 }));
 
@@ -210,13 +213,18 @@ function App() {
                 onClose={()=>{setOpen(false)}}
                 onOpen={()=>{setOpen(true)}}
             >
-                <div className={isSm ? classes.drawerNarrow : classes.drawer} >
+                <div 
+                    className={isSm ? classes.drawerNarrow : classes.drawer} 
+                    style={{width: page === 'resume' ? '49rem' : '25rem'}}
+                    >
+                    {/*
                     <IconButton 
                         onClick={()=>{setOpen(false); setPage('');}}
                         style={{float: 'right'}}
                     >
                         {<CloseIcon/>}
                     </IconButton>
+                    */}
                     { page === 'about' && <About /> }
                     { page === 'projects' && <Projects /> }
                     { page === 'contact' && 

@@ -9,9 +9,9 @@ import TextField from '@mui/material/TextField';
 import emailjs from 'emailjs-com';
 
 const useStyles = makeStyles()(() => ({
-    contactInfoRoot: {
-        width: '16rem',
-        paddingTop: '2rem'
+    root: {
+        width: '23rem',
+        padding: '1rem'
     }, 
     contactInfoItem: {
         display: 'flex',
@@ -120,8 +120,8 @@ function Contact(props) {
     }
 
     return(
-        <>
-            <div className={classes.contactInfoRoot}>            
+        <div className={classes.root}>
+            <div>            
                 <h1>Contact Me</h1>
                 <div className={classes.contactInfoItem}>
                     <HomeIcon/>
@@ -179,7 +179,7 @@ function Contact(props) {
                     <div><input id='button_send' type='submit' value='Send'/></div>                                                    
                 </form>                
             </div>
-        </>
+        </div>
     );
 }
 
