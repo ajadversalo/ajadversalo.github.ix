@@ -13,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Contact from './Contact';
 import Resume from './Resume';
 import { PDFDownloadLink } from '@react-pdf/renderer';
+import Dialog from '@mui/material/Dialog';
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -215,7 +216,7 @@ function App() {
             >
                 <div 
                     className={isSm ? classes.drawerNarrow : classes.drawer} 
-                    style={{width: page === 'resume' ? isSm ? '30rem' : '49rem' : '25rem'}}
+                    style={{width: page === 'resume' ? '30rem' : '25rem'}}
                     >
                     {/*
                     <IconButton 

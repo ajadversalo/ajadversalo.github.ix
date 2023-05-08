@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs } from 'react-pdf';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
@@ -83,20 +83,13 @@ function Resume(props) {
     const { classes } = useStyles();
     const theme = useTheme();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
-
     const ref = React.createRef();
-
+    
     return(
         <div className={classes.root}>
-            {/*
-            <Document file="./AJAdversalo-FullStack.pdf" onLoadSuccess={()=>{}}>
-                
-            </Document>
-          
-            <div style={{height: '4rem'}} /> 
-            */}
-            
-            <iframe src='AJAdversalo-FullStack.pdf' style={isSm ? {width: '30rem', height: '50rem', overflow: 'hidden'} : {width: '50rem', height: '50rem', overflow: 'hidden'}} />
+            <div style={{height: '50rem'}}>
+                <object data='./resume.pdf' height='100%' style={{width: '100%'}}></object>
+            </div>
             
             {/*
             <div className={classes.paper} ref={ref}>
