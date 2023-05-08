@@ -153,7 +153,13 @@ function App() {
             window.removeEventListener('resize', resizeListener);
           }
     },[]);
-    
+
+    useEffect(() => {
+        if(height){
+            console.log('height', height)
+        }
+    }, [height])
+
     const Projects = () => {
         return(
             <>            
@@ -209,7 +215,7 @@ function App() {
             >
                 <div 
                     className={isSm ? classes.drawerNarrow : classes.drawer} 
-                    style={{width: page === 'resume' ? '49rem' : '25rem'}}
+                    style={{width: page === 'resume' ? isSm ? '30rem' : '49rem' : '25rem'}}
                     >
                     {/*
                     <IconButton 

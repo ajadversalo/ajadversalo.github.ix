@@ -95,7 +95,9 @@ function Resume(props) {
           
             <div style={{height: '4rem'}} /> 
             */}
-            <iframe src='AJAdversalo-FullStack.pdf'style={isSm ? {width: '30rem', height: '50rem', overflow: 'hidden'} : {width: '50rem', height: '50rem', overflow: 'hidden'}} />
+            
+            <iframe src='AJAdversalo-FullStack.pdf' style={isSm ? {width: '30rem', height: '50rem', overflow: 'hidden'} : {width: '50rem', height: '50rem', overflow: 'hidden'}} />
+            
             {/*
             <div className={classes.paper} ref={ref}>
                 <div style={{textAlign: 'center'}}>
