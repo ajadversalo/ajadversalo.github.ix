@@ -153,13 +153,7 @@ function App() {
             window.removeEventListener('resize', resizeListener);
           }
     },[]);
-
-    useEffect(() => {
-        if(height){
-            console.log('height', height)
-        }
-    }, [height])
-
+    
     const Projects = () => {
         return(
             <>            
