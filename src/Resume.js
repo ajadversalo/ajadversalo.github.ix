@@ -10,8 +10,7 @@ const useStyles = makeStyles()(() => ({
     root: {
         backgroundColor: 'lightgrey',   
         overflowX: 'hidden',
-        overflowY: 'hidden',
-        paddingTop: '2.5rem'     
+        overflowY: 'hidden' 
     },
     paper: {
         backgroundColor: '#FFF',
@@ -97,9 +96,7 @@ function Resume(props) {
                 </Tooltip>
                 <img  src={'resume.jpg'} style={{width: '100%'}}/>
             </div>
-            {/*
-                  
-            
+            {/*                              
             <div className={classes.paper} ref={ref}>
                 <div style={{textAlign: 'center'}}>
                     <div className={classes.nameRoot}>
@@ -110,8 +107,7 @@ function Resume(props) {
                     <div className={classes.positionRoot}>
                         <Typography>Software Engineer</Typography>
                     </div>
-                </div>
-                
+                </div>                
                 <div className={classes.body}>
                     <div className={classes.left}>
                         <div className={classes.section}>

@@ -63,15 +63,6 @@ const useStyles = makeStyles()(() => ({
         justifyContent: 'space-evenly',        
         paddingTop: '1.5rem'
     },
-    //button: {
-    //    paddingBottom: '0.5rem',
-    //    borderRadius: '2px',
-    //    transition: 'backgroundColor 0.2s ease 0.2s',
-    //    ':hover': {
-    //        color: '#000',
-    //        backgroundColor: '#FFF',
-    //    }
-    //},
     heading: {
         color: '#FFF',
     },
