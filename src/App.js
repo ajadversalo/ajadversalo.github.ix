@@ -44,7 +44,7 @@ const useStyles = makeStyles()(() => ({
     buttonRoot: {
         color: '#FFF',
         fontSize: '2rem',
-        width: '8rem',
+        width: '10rem',
         float: 'right',
         display: 'flex',
         flexDirection: 'column',
@@ -91,15 +91,28 @@ const useStyles = makeStyles()(() => ({
         justifyContent: 'space-around'
     },
     drawer: {
-        //padding: '1rem',
         height: '100%',
-        width: '25rem',
-        //backgroundColor: 'red'
+        width: '40rem',
     },
     drawerNarrow: {
-        //padding: '1rem',
-        height: '100%',
-        //backgroundColor: 'red'
+        width: '100%',
+        height: '100%'        
+    },
+    drawerPaper: {
+        //backgroundColor: 'transparent',
+        // boxShadow: 'none',
+        // left: '50%',
+        // marginLeft: '-350px',
+        // top: '30vh',
+        //width: '700px',
+    },
+    drawerHeader: {
+        backgroundColor: 'lightgrey', 
+        width: '100%', 
+        overflow: 'overlay', 
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'start'
     }
 }));
 
@@ -117,7 +130,7 @@ function App() {
     
     const About = () => {
         return(
-            <div style={{padding: '1rem'}}>            
+            <div style={{padding: '1rem 1.5rem 1rem 1rem', paddingTop: '3rem'}}>            
                 <Avatar alt="A.J. Adversalo" src="face.jfif" />
                 <h1>More about me...</h1>
                 <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
@@ -149,36 +162,21 @@ function App() {
           window.addEventListener('resize', resizeListener);
 
           return () => {
-            // remove resize listener
             window.removeEventListener('resize', resizeListener);
           }
     },[]);
 
     const Projects = () => {
         return(
-            <>            
+            <div style={{padding: '1rem', paddingTop: '2.5rem'}}>            
                 <h1>Projects</h1>
-            </>
+            </div>
         );
     }
     
     const handleClosePopup = () => {
         setOpenPopup(false);
     }
-
-    // let drawerWidth = useCallback(() => {
-    //     if(isSm){
-    //         return '22rem';
-    //     } 
-    //     else if(page === 'resume'){
-    //         return '55rem';
-    //     } 
-    //     else 
-    //     {
-    //         return '23rem';
-    //     }
-                                
-    // },[page]);
 
     return (
         <div className={classes.root} >
@@ -220,16 +218,17 @@ function App() {
                 open={open}
                 onClose={()=>{setOpen(false)}}
                 onOpen={()=>{setOpen(true)}}
+                style={{width:'100%' }}
             >
-                <div 
-                    className={isSm ? classes.drawerNarrow : classes.drawer} 
-                    style={{width: page === 'resume' ? '100%' : '25rem' }}
-                    >
-                    <IconButton 
-                        onClick={()=>{setOpen(false); setPage('');}}                        
-                    >
-                        {<CloseIcon/>}
-                    </IconButton>
+                <div className={isSm ? classes.drawerNarrow : classes.drawer}>
+                    <div className={classes.drawerHeader}>
+                        <IconButton 
+                            onClick={()=>{setOpen(false); setPage('');}}
+                            style={{paddingLeft: '0.8rem'}}                        
+                        >
+                            {<CloseIcon/>}
+                        </IconButton>
+                    </div>
                     { page === 'about' && <About /> }
                     { page === 'projects' && <Projects /> }
                     { page === 'contact' && 
