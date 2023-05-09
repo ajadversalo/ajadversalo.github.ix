@@ -86,12 +86,8 @@ function Resume(props) {
     const ref = React.createRef();
     
     return(
-        <div className={classes.root}>
-            
-            <div style={{height: '50rem'}}>
-                <object data='./resume.pdf' style={{width: '100%', height: '100%'}}></object>
-            </div>
-            
+        <div className={classes.root}>                        
+            <object data='./resume.pdf' style={{width: isSm ? '20rem' : '56rem', height: '100vh'}}></object>                        
             {/*
             <div className={classes.paper} ref={ref}>
                 <div style={{textAlign: 'center'}}>

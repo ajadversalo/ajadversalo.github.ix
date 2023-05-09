@@ -175,14 +175,14 @@ function App() {
 
     let drawerWidth = useCallback(() => {
         if(isSm){
-            return '25rem';
+            return '20rem';
         } 
         else if(page === 'resume'){
             return '55rem';
         } 
         else 
         {
-            return '25rem';
+            return '20rem';
         }
                                 
     },[page]);
