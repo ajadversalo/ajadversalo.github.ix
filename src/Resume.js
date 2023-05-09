@@ -87,8 +87,9 @@ function Resume(props) {
     
     return(
         <div className={classes.root}>
+            
             <div style={{height: '50rem'}}>
-                <object data='./resume.pdf' height='100%' style={{width: '100%'}}></object>
+                <object data='./resume.pdf' style={{width: '100%', height: '100%'}}></object>
             </div>
             
             {/*
@@ -141,9 +142,9 @@ function Resume(props) {
                         </div>
                     </div>
                 </div>
-                
+    
             </div>
-            */}                  
+            */}               
         </div>
     );
 }

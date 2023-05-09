@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
@@ -173,6 +173,20 @@ function App() {
         setOpenPopup(false);
     }
 
+    let drawerWidth = useCallback(() => {
+        if(isSm){
+            return '25rem';
+        } 
+        else if(page === 'resume'){
+            return '55rem';
+        } 
+        else 
+        {
+            return '25rem';
+        }
+                                
+    },[page]);
+
     return (
         <div className={classes.root} >
             <div>
@@ -216,7 +230,7 @@ function App() {
             >
                 <div 
                     className={isSm ? classes.drawerNarrow : classes.drawer} 
-                    style={{width: page === 'resume' ? '30rem' : '25rem'}}
+                    style={{width: drawerWidth() }}
                     >
                     {/*
                     <IconButton 
