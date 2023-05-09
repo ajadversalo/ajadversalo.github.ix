@@ -118,7 +118,7 @@ function App() {
     
     const About = () => {
         return(
-            <div style={{paddingTop: '2rem'}}>            
+            <div style={{padding: '1rem'}}>            
                 <Avatar alt="A.J. Adversalo" src="face.jfif" />
                 <h1>More about me...</h1>
                 <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
@@ -169,14 +169,14 @@ function App() {
 
     let drawerWidth = useCallback(() => {
         if(isSm){
-            return '25rem';
+            return '22rem';
         } 
         else if(page === 'resume'){
             return '55rem';
         } 
         else 
         {
-            return '25rem';
+            return '23rem';
         }
                                 
     },[page]);
@@ -224,7 +224,8 @@ function App() {
             >
                 <div 
                     className={isSm ? classes.drawerNarrow : classes.drawer} 
-                    style={{width: drawerWidth() }}>
+                    //style={{width: drawerWidth() }}
+                    >
                     <IconButton 
                         onClick={()=>{setOpen(false); setPage('');}}                        
                     >
