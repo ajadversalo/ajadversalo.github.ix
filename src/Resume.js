@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React from 'react';
 import { makeStyles } from 'tss-react/mui';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -13,14 +13,14 @@ const useStyles = makeStyles()(() => ({
         backgroundColor: '#FFF',
         margin: '1rem'
     },
-    drawerPaper: {
-        backgroundColor: 'transparent',
-        boxShadow: 'none',
-        left: '50%',
-        marginLeft: '-350px',
-        top: '30vh',
-        width: '700px',
-    },
+    // drawerPaper: {
+    //     backgroundColor: 'transparent',
+    //     boxShadow: 'none',
+    //     left: '50%',
+    //     marginLeft: '-350px',
+    //     top: '30vh',
+    //     width: '700px',
+    // },
     name: {
         fontSize: '2rem'
     },
@@ -84,8 +84,8 @@ function Resume(props) {
     const ref = React.createRef();
     
     return(
-        <div className={classes.root}>            
-            <div style={{paddingTop: '1rem'}}>
+        <div className={classes.root}>                        
+            <div style={{paddingTop: '0.1rem'}}>
                 <img  src={'resume.jpg'} style={{width: '100%'}}/>
             </div>
             {/*

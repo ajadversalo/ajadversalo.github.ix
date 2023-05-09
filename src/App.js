@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
@@ -12,7 +12,6 @@ import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 import Contact from './Contact';
 import Resume from './Resume';
-import { PDFDownloadLink } from '@react-pdf/renderer';
 import Dialog from '@mui/material/Dialog';
 
 import Snackbar from '@mui/material/Snackbar';
@@ -167,19 +166,19 @@ function App() {
         setOpenPopup(false);
     }
 
-    let drawerWidth = useCallback(() => {
-        if(isSm){
-            return '22rem';
-        } 
-        else if(page === 'resume'){
-            return '55rem';
-        } 
-        else 
-        {
-            return '23rem';
-        }
+    // let drawerWidth = useCallback(() => {
+    //     if(isSm){
+    //         return '22rem';
+    //     } 
+    //     else if(page === 'resume'){
+    //         return '55rem';
+    //     } 
+    //     else 
+    //     {
+    //         return '23rem';
+    //     }
                                 
-    },[page]);
+    // },[page]);
 
     return (
         <div className={classes.root} >
@@ -224,7 +223,7 @@ function App() {
             >
                 <div 
                     className={isSm ? classes.drawerNarrow : classes.drawer} 
-                    //style={{width: drawerWidth() }}
+                    style={{width: page === 'resume' ? '100%' : '25rem' }}
                     >
                     <IconButton 
                         onClick={()=>{setOpen(false); setPage('');}}                        
