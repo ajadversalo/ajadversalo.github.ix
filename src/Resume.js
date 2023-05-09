@@ -87,7 +87,7 @@ function Resume(props) {
     
     return(
         <div className={classes.root}>                        
-            <object data='./resume.pdf' style={{width: isSm ? '20rem' : '56rem', height: '100vh'}}></object>                        
+            <object data='./resume.pdf' style={{width:  '56rem', height: '100vh'}}></object>                        
             {/*
             <div className={classes.paper} ref={ref}>
                 <div style={{textAlign: 'center'}}>

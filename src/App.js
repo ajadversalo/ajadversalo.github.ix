@@ -230,7 +230,7 @@ function App() {
             >
                 <div 
                     className={isSm ? classes.drawerNarrow : classes.drawer} 
-                    style={{width: drawerWidth() }}
+                    style={{width: '55rem' }}
                     >
                     {/*
                     <IconButton 
