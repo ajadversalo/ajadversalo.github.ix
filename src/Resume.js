@@ -1,7 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { makeStyles } from 'tss-react/mui';
-import Typography from '@mui/material/Typography';
-import { Document, Page, pdfjs } from 'react-pdf';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
@@ -86,8 +84,10 @@ function Resume(props) {
     const ref = React.createRef();
     
     return(
-        <div className={classes.root}>                        
-            <img src={'resume.jpg'} style={{width: '100%'}}/>
+        <div className={classes.root}>            
+            <div style={{paddingTop: '1rem'}}>
+                <img  src={'resume.jpg'} style={{width: '100%'}}/>
+            </div>
             {/*
             <object data='./resume.pdf' style={{width:  '56rem', height: '100vh'}}></object>                        
             

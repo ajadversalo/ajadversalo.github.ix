@@ -155,12 +155,6 @@ function App() {
           }
     },[]);
 
-    useEffect(() => {
-        if(height){
-            console.log('height', height)
-        }
-    }, [height])
-
     const Projects = () => {
         return(
             <>            
@@ -175,14 +169,14 @@ function App() {
 
     let drawerWidth = useCallback(() => {
         if(isSm){
-            return '20rem';
+            return '25rem';
         } 
         else if(page === 'resume'){
             return '55rem';
         } 
         else 
         {
-            return '20rem';
+            return '25rem';
         }
                                 
     },[page]);
@@ -230,16 +224,12 @@ function App() {
             >
                 <div 
                     className={isSm ? classes.drawerNarrow : classes.drawer} 
-                    style={{width: drawerWidth() }}
-                    >
-                    {/*
+                    style={{width: drawerWidth() }}>
                     <IconButton 
-                        onClick={()=>{setOpen(false); setPage('');}}
-                        style={{float: 'right'}}
+                        onClick={()=>{setOpen(false); setPage('');}}                        
                     >
                         {<CloseIcon/>}
                     </IconButton>
-                    */}
                     { page === 'about' && <About /> }
                     { page === 'projects' && <Projects /> }
                     { page === 'contact' && 
