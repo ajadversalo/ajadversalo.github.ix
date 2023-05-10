@@ -104,6 +104,10 @@ const useStyles = makeStyles()(() => ({
         display: 'flex', 
         flexDirection: 'row', 
         justifyContent: 'start'
+    },
+    aboutRoot: {
+        padding: '1rem 1.5rem 1rem 1rem', 
+        paddingTop: '3rem'
     }
 }));
 
@@ -118,11 +122,27 @@ function App() {
     const [popupMsgType, setPopupMsgType] = useState('error');
     const [openPopup, setOpenPopup] = useState(false);
     const [height, setHeight] = useState(window.innerHeight);
+
+    useEffect(() => {
+        document.title ='AJ - Full-Stack Dev';
+    }, []);
+
+    const getHeight = () => window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    useEffect(() => {
+        const resizeListener = () => {
+            setHeight(getHeight())
+          };
+          window.addEventListener('resize', resizeListener);
+          return () => {
+            window.removeEventListener('resize', resizeListener);
+          }
+    },[]);
     
     const About = () => {
         return(
-            <div style={{padding: '1rem 1.5rem 1rem 1rem', paddingTop: '3rem'}}>            
-                <Avatar alt="A.J. Adversalo" src="face.jfif" />
+            <div className={classes.aboutRoot}>            
+                <Avatar alt="AJAdversalo" src="face.jfif" />
                 <h1>More about me...</h1>
                 <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
                     opportinities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
@@ -138,29 +158,28 @@ function App() {
         );
     }
 
-    useEffect(() => {
-        document.title ='AJ - Full-Stack Dev';
-    }, []);
-
-    const getHeight = () => window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-    useEffect(() => {
-        const resizeListener = () => {
-
-            setHeight(getHeight())
-          };
-
-          window.addEventListener('resize', resizeListener);
-
-          return () => {
-            window.removeEventListener('resize', resizeListener);
-          }
-    },[]);
-
     const Projects = () => {
         return(
             <div style={{padding: '1rem', paddingTop: '2.5rem'}}>            
                 <h1>Projects</h1>
+                <p><span style={{fontSize: '1.5rem'}}>ReviewGx</span> is a Medication Therapy Management tool that looks at 
+                    evidence-based pharmacogenomics, deprescribing insights, clinical 
+                    lab data and other patient-specific information to help you perform 
+                    comprehensive medication reviews and keep patients safe and healthy.
+                </p>
+                <p><span style={{fontSize: '1.5rem'}}>TreatGx</span> generates medication options that are safe and effective for you by combining 
+                    your genetics with up-to-date clinical evidence and information that you enter. 
+                    TreatGx has been developed to facilitate the shared decision-making process 
+                    between you and your healthcare professional.
+                </p>
+                <p><span style={{fontSize: '1.5rem'}}>Alogogen</span> is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. 
+                    With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. 
+                    This application is exclusively designed for internal use by our experienced algorithm team, 
+                    providing them with an efficient solution for generating complex algorithms.</p>
+                <p><span style={{fontSize: '1.5rem'}}>TrackGx</span> is an application which allows you to effortlessly monitor the efficacy of your prescriptions 
+                    by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.</p>
+                <p><span style={{fontSize: '1.5rem'}}>LabGx</span> empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. 
+                    With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.</p>
             </div>
         );
     }
@@ -183,7 +202,9 @@ function App() {
                 <div className={classes.headingRoot} style={{paddingTop: isSm ? '7rem' : '13rem'}}>                  
                     <div style={{ fontSize: 'calc(0.5rem + 1vw)', color: '#CCDBDC', fontWeight: 600}}>Hi There! I'm</div>
                     <div style={{ fontSize: 'calc(2rem + 2vw)', padding: '1rem 0' }}>AJ Adversalo</div>                                     
-                    <div style={{ fontSize: 'calc(1rem + 1vw)', color: '#CCDBDC' }}>I'm a full-stack software developer passionate in creating robust, user-friendly web applications that make a difference.</div>                         
+                    <div style={{ fontSize: 'calc(1rem + 1vw)', color: '#CCDBDC' }}>
+                        I'm a full-stack software developer passionate in creating robust, user-friendly web applications that make a difference.
+                    </div>                         
                     <div style={{ paddingTop: '2rem' }}>
                         <Button 
                             className='resumeButton' 
