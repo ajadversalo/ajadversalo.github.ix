@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+
 import { makeStyles } from 'tss-react/mui';
-import Button from '@mui/material/Button';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Avatar from '@mui/material/Avatar';
-import CloseIcon from '@mui/icons-material/Close';
-import Contact from './Contact';
-import Resume from './Resume';
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Avatar from '@mui/material/Avatar';
+import CloseIcon from '@mui/icons-material/Close';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
+import Contact from './Contact';
+import Resume from './Resume';
 
 const useStyles = makeStyles()(() => ({
     root: {
