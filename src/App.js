@@ -12,7 +12,6 @@ import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 import Contact from './Contact';
 import Resume from './Resume';
-import Dialog from '@mui/material/Dialog';
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -20,9 +19,6 @@ import MuiAlert from '@mui/material/Alert';
 const useStyles = makeStyles()(() => ({
     root: {
         textAlign: 'center',
-        /*background: 'linear-gradient(#7286A0, #2F4858)',*/
-       // height: '100vh',
-        //backgroundColor: '#023047',
         minWidth: '18rem'
     },
     title: {
@@ -89,14 +85,14 @@ const useStyles = makeStyles()(() => ({
         width: '100%',
         height: '100%'        
     },
-    drawerPaper: {
-        //backgroundColor: 'transparent',
-        // boxShadow: 'none',
-        // left: '50%',
-        // marginLeft: '-350px',
-        // top: '30vh',
-        //width: '700px',
-    },
+    // drawerPaper: {
+    //     backgroundColor: 'transparent',
+    //     boxShadow: 'none',
+    //     left: '50%',
+    //     marginLeft: '-350px',
+    //     top: '30vh',
+    //     width: '700px',
+    // },
     drawerHeader: {
         backgroundColor: 'lightgrey', 
         width: '100%', 
