@@ -1,6 +1,6 @@
 body {
-    font-family: 'Trebuchet MS';
-    background-color: #023047;
+     font-family: 'Wix MadeFor Display'; 
+    background-color: #F5C827;
 }
 
 /* .App {
@@ -22,7 +22,7 @@ body {
     border-radius: 2px;
     transition: all 0.2s;
     padding: 0 1rem 0.3rem 1rem;
-    color: #FFC857;
+    color: #000;
     font-size: 1.4rem;
 }
 

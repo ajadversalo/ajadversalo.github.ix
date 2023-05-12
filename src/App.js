@@ -32,7 +32,7 @@ const useStyles = makeStyles()(() => ({
         fontSize: '3rem'
     },
     headingRoot: {
-        color: '#FFF',
+        color: '#000',
         maxWidth: '40rem',
         minWidth: '15rem',
         textAlign: 'left',
@@ -40,7 +40,7 @@ const useStyles = makeStyles()(() => ({
         padding: '13rem 2rem 0 2rem'
     },
     buttonRoot: {
-        color: '#FFF',
+        color: '#000',
         fontSize: '2rem',
         width: '10rem',
         float: 'right',
@@ -52,7 +52,7 @@ const useStyles = makeStyles()(() => ({
         paddingRight: '1rem'
     },
     buttonRootNarrow: {
-        color: '#FFF',
+        color: '#000',
         fontSize: '2rem',
         width: '100%',
         float: 'right',
@@ -62,17 +62,17 @@ const useStyles = makeStyles()(() => ({
         paddingTop: '1.5rem'
     },
     heading: {
-        color: '#FFF',
+        color: '#000',
     },
     iconRoot: {
-        color: '#FFF',
+        color: '#000',
         display: 'flex',
         flexDirection: 'column',
         paddingTop: '7rem',
         paddingLeft: '1rem'
     },
     iconRootNarrow: {
-        color: '#FFF',
+        color: '#000',
         display: 'flex',
         flexDirection: 'row',
         paddingTop: '4rem',
@@ -87,14 +87,6 @@ const useStyles = makeStyles()(() => ({
         width: '100%',
         height: '100%'        
     },
-    // drawerPaper: {
-    //     backgroundColor: 'transparent',
-    //     boxShadow: 'none',
-    //     left: '50%',
-    //     marginLeft: '-350px',
-    //     top: '30vh',
-    //     width: '700px',
-    // },
     drawerHeader: {
         backgroundColor: 'lightgrey', 
         width: '100%', 
@@ -106,6 +98,11 @@ const useStyles = makeStyles()(() => ({
     aboutRoot: {
         padding: '1rem 1.5rem 1rem 1rem', 
         paddingTop: '3rem'
+    },
+    name: {
+        fontSize: 'calc(2rem + 2vw)', 
+        padding: '1rem 0', 
+        fontFamily: 'Archivo Black'
     }
 }));
 
@@ -192,21 +189,24 @@ function App() {
                 <div className={isSm ? classes.buttonRootNarrow : classes.buttonRoot}>
                     <div className='button' onClick={()=>{setOpen(true); setPage('about')}}>About</div>
                     <div className='button' onClick={()=>{setOpen(true); setPage('projects')}}>Projects</div>
-                    <div className='button' onClick={()=>{setOpen(true); setPage('contact')}}>Contact Me</div>
+                    <div className='button' onClick={()=>{setOpen(true); setPage('contact')}}>Contact</div>
                 </div>
             </div>
             <div className="line delay" style={{left: '98%'}}></div>
             <div style={{height: '100%'}}>
                 <div className={classes.headingRoot} style={{paddingTop: isSm ? '7rem' : '13rem'}}>                  
-                    <div style={{ fontSize: 'calc(0.5rem + 1vw)', color: '#CCDBDC', fontWeight: 600}}>Hi There! I'm</div>
-                    <div style={{ fontSize: 'calc(2rem + 2vw)', padding: '1rem 0' }}>AJ Adversalo</div>                                     
-                    <div style={{ fontSize: 'calc(1rem + 1vw)', color: '#CCDBDC' }}>
+                    <div style={{ fontSize: 'calc(0.5rem + 1vw)', color: '#000', fontWeight: 600}}>Hi There! I'm</div>
+                    <div className={classes.name}>
+                        AJ Adversalo
+                        <div style={{height: '2px', width: '100%', backgroundColor: '#000'}}></div>
+                    </div>                                     
+                    <div style={{ fontSize: 'calc(1rem + 1vw)', color: '#000' }}>
                         I'm a full-stack software developer passionate in creating robust, user-friendly web applications that make a difference.
                     </div>                         
                     <div style={{ paddingTop: '2rem' }}>
                         <Button 
                             className='resumeButton' 
-                            style={{ padding: '0.5rem 1rem', color: '#FFF', border: '1px solid #FFF' }}
+                            style={{ padding: '0.5rem 1rem', color: '#000', border: '1px solid #FFF' }}
                             onClick={()=>{setOpen(true); setPage('resume')}}>
                                 Resume
                         </Button>
@@ -216,10 +216,10 @@ function App() {
             <div>
                 <div className={isSm ? classes.iconRootNarrow : classes.iconRoot} style={height < 550 ? { position: 'relative', paddingTop: '2rem'} : {position: 'absolute', bottom: 15}}>
                     <IconButton style={{width: '2rem'}} onClick={() => window.open('https://www.linkedin.com/in/ajadversalo', '_blank')}>
-                        {<LinkedInIcon style={{fill: '#FFF'}} />}
+                        {<LinkedInIcon style={{fill: '#000'}} />}
                     </IconButton>
                     <IconButton style={{ width: '2rem' }} onClick={()=>window.open('https://github.com/ajadversalo', '_blank')}>
-                        {<GitHubIcon style={{ fill: '#FFF' }} />}
+                        {<GitHubIcon style={{ fill: '#000' }} />}
                     </IconButton>
                 </div>
             </div>
