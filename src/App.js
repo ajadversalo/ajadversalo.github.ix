@@ -41,7 +41,7 @@ const useStyles = makeStyles()(() => ({
     },
     buttonRoot: {
         color: '#000',
-        fontSize: '2rem',
+        fontSize: '1.5rem',
         width: '10rem',
         float: 'right',
         display: 'flex',
@@ -53,7 +53,7 @@ const useStyles = makeStyles()(() => ({
     },
     buttonRootNarrow: {
         color: '#000',
-        fontSize: '2rem',
+        fontSize: '1.3rem',
         width: '100%',
         float: 'right',
         display: 'flex',
@@ -116,7 +116,6 @@ const useStyles = makeStyles()(() => ({
         },
     },
     button :{
-        fontSize: '1.5rem',
         '&:hover': {
             color: '#FFF'
         },
