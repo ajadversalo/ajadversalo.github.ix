@@ -103,6 +103,23 @@ const useStyles = makeStyles()(() => ({
         fontSize: 'calc(2rem + 2vw)', 
         padding: '1rem 0', 
         fontFamily: 'Archivo Black'
+    },
+    resumeButton: {
+        padding: '0.5rem 1rem', 
+        color: '#000', 
+        border: '2px solid #000',
+        borderRadius: 0,
+        fontFamily: 'Wix MadeFor Display',
+        fontSize: '1.1rem',
+        '&:hover': {
+            backgroundColor: '#FFF'
+        },
+    },
+    button :{
+        fontSize: '1.5rem',
+        '&:hover': {
+            color: '#FFF'
+        },
     }
 }));
 
@@ -187,9 +204,9 @@ function App() {
         <div className={classes.root} >
             <div>
                 <div className={isSm ? classes.buttonRootNarrow : classes.buttonRoot}>
-                    <div className='button' onClick={()=>{setOpen(true); setPage('about')}}>About</div>
-                    <div className='button' onClick={()=>{setOpen(true); setPage('projects')}}>Projects</div>
-                    <div className='button' onClick={()=>{setOpen(true); setPage('contact')}}>Contact</div>
+                    <div className={classes.button} onClick={()=>{setOpen(true); setPage('about')}}>About</div>
+                    <div className={classes.button} onClick={()=>{setOpen(true); setPage('projects')}}>Projects</div>
+                    <div className={classes.button} onClick={()=>{setOpen(true); setPage('contact')}}>Contact</div>
                 </div>
             </div>
             <div className="line delay" style={{left: '98%'}}></div>
@@ -204,11 +221,9 @@ function App() {
                         I'm a full-stack software developer passionate in creating robust, user-friendly web applications that make a difference.
                     </div>                         
                     <div style={{ paddingTop: '2rem' }}>
-                        <Button 
-                            className='resumeButton' 
-                            style={{ padding: '0.5rem 1rem', color: '#000', border: '1px solid #FFF' }}
+                        <Button  className={classes.resumeButton}                                                      
                             onClick={()=>{setOpen(true); setPage('resume')}}>
-                                Resume
+                                My Resume
                         </Button>
                     </div>
                 </div>               
