@@ -2,9 +2,6 @@ import React from 'react';
 import { makeStyles } from 'tss-react/mui';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import Tooltip from '@mui/material/Tooltip';
 
 const useStyles = makeStyles()(() => ({
     root: {
@@ -78,22 +75,10 @@ function Resume(props) {
     const theme = useTheme();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
     const ref = React.createRef();
-
-    const onDownload = () => {
-        const link = document.createElement('a');
-        link.download = 'ajadversalo-resume.pdf';
-        link.href = 'resume.pdf';
-        link.click();
-      };
-    
+        
     return(
         <div className={classes.root}>                        
-            <div style={{paddingTop: '0.1rem'}}>
-                <Tooltip title='download' placement='right'>
-                    <IconButton onClick={onDownload} style={{position: 'absolute', paddingLeft: '0.8rem'}}>
-                        {<SaveAltIcon style={{ fill: 'grey' }} />}
-                    </IconButton>
-                </Tooltip>
+            <div style={{paddingTop: '0.1rem'}}>                
                 <img  src={'resume.jpg'} style={{width: '100%'}}/>
             </div>
             {/*                              

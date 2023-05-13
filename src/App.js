@@ -13,6 +13,8 @@ import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import Tooltip from '@mui/material/Tooltip';
 
 import Contact from './Contact';
 import Resume from './Resume';
@@ -94,7 +96,8 @@ const useStyles = makeStyles()(() => ({
         overflow: 'overlay', 
         display: 'flex', 
         flexDirection: 'row', 
-        justifyContent: 'start'
+        justifyContent: 'start',
+        justifyContent: 'space-between'
     },
     aboutRoot: {
         padding: '1rem 1.5rem 1rem 1rem', 
@@ -226,6 +229,13 @@ function App() {
         setOpenPopup(false);
     }
 
+    const onDownload = () => {
+        const link = document.createElement('a');
+        link.download = 'ajadversalo-resume.pdf';
+        link.href = 'resume.pdf';
+        link.click();
+    };
+
     return (
         <div className={classes.root}>
             <div>
@@ -282,6 +292,13 @@ function App() {
                         >
                             {<CloseIcon/>}
                         </IconButton>
+                        { page === 'resume' &&
+                            <Tooltip title='download' placement='right'>
+                                <IconButton onClick={onDownload}>
+                                    {<SaveAltIcon style={{ fill: 'grey' }} />}
+                                </IconButton>
+                            </Tooltip>
+                        }
                     </div>
                     { page === 'about' && <About /> }
                     { page === 'projects' && <Projects /> }
