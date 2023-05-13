@@ -11,7 +11,7 @@ import emailjs from 'emailjs-com';
 const useStyles = makeStyles()(() => ({
     root: {
         width: '100%',
-        paddingTop: '2.5rem'
+        paddingTop: '1rem'
     }, 
     contactInfoItem: {
         display: 'flex',

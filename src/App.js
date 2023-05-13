@@ -82,13 +82,15 @@ const useStyles = makeStyles()(() => ({
     drawer: {
         height: '100%',
         width: '40rem',
+        backgroundColor: '#EBEBEB'
     },
     drawerNarrow: {
         width: '100%',
-        height: '100%'        
+        height: '100%',
+        backgroundColor: '#EBEBEB'   
     },
     drawerHeader: {
-        backgroundColor: 'lightgrey', 
+        backgroundColor: '#C0C0C0', 
         width: '100%', 
         overflow: 'overlay', 
         display: 'flex', 
@@ -97,29 +99,55 @@ const useStyles = makeStyles()(() => ({
     },
     aboutRoot: {
         padding: '1rem 1.5rem 1rem 1rem', 
-        paddingTop: '3rem'
+        paddingTop: '1rem'
     },
     name: {
         fontSize: 'calc(2rem + 2vw)', 
         padding: '1rem 0', 
-        fontFamily: 'Archivo Black'
+        fontFamily: 'Archivo Black',
+        color: '#FCFFFF'
     },
     resumeButton: {
         padding: '0.5rem 1rem', 
-        color: '#000', 
-        border: '2px solid #000',
+        color: '#FCFFFF', 
+        border: '2px solid #FFF',
         borderRadius: 0,
         fontFamily: 'Wix MadeFor Display',
         fontSize: '1.1rem',
         '&:hover': {
-            backgroundColor: '#FFF'
+            backgroundColor: '#FFF',
+            color: '#000'
         },
     },
     button :{
+        color: '#A8DADC',
         '&:hover': {
             color: '#FFF'
         },
-    }
+    },
+    icon: {
+        fill: '#A8DADC',
+        '&:hover': {
+            fill: '#FFF'
+        },
+    },
+    underscore: {
+        height: '2px', 
+        width: '100%', 
+        backgroundColor: '#FCFFFF'
+    },
+    intro: {
+        fontSize: 'calc(1rem + 1vw)', 
+        color: '#B5B9BC'
+    },
+    greeting : {        
+        color: '#B5B9BC', 
+        fontSize: 'calc(0.5rem + 1vw)', 
+        fontWeight: 600
+    },
+    drawerPaper: {
+        backgroundColor: '#CED0CE'
+    },
 }));
 
 function App() {
@@ -133,6 +161,7 @@ function App() {
     const [popupMsgType, setPopupMsgType] = useState('error');
     const [openPopup, setOpenPopup] = useState(false);
     const [height, setHeight] = useState(window.innerHeight);
+
 
     useEffect(() => {
         document.title ='AJ - Full-Stack Dev';
@@ -171,7 +200,7 @@ function App() {
 
     const Projects = () => {
         return(
-            <div style={{padding: '1rem', paddingTop: '2.5rem'}}>            
+            <div style={{padding: '1rem', paddingTop: '1rem'}}>            
                 <h1>Projects</h1>
                 <p><span style={{fontSize: '1.5rem'}}>ReviewGx</span> is a Medication Therapy Management tool that looks at 
                     evidence-based pharmacogenomics, deprescribing insights, clinical 
@@ -200,7 +229,7 @@ function App() {
     }
 
     return (
-        <div className={classes.root} >
+        <div className={classes.root}>
             <div>
                 <div className={isSm ? classes.buttonRootNarrow : classes.buttonRoot}>
                     <div className={classes.button} onClick={()=>{setOpen(true); setPage('about')}}>About</div>
@@ -211,12 +240,14 @@ function App() {
             <div className="line delay" style={{left: '98%'}}></div>
             <div style={{height: '100%'}}>
                 <div className={classes.headingRoot} style={{paddingTop: isSm ? '7rem' : '13rem'}}>                  
-                    <div style={{ fontSize: 'calc(0.5rem + 1vw)', color: '#000', fontWeight: 600}}>Hi There! I'm</div>
+                    <div className={classes.greeting}>
+                        Hi There! I'm
+                    </div>
                     <div className={classes.name}>
                         AJ Adversalo
-                        <div style={{height: '2px', width: '100%', backgroundColor: '#000'}}></div>
+                        <div className={classes.underscore}></div>
                     </div>                                     
-                    <div style={{ fontSize: 'calc(1rem + 1vw)', color: '#000' }}>
+                    <div className={classes.intro}>
                         I'm a full-stack software developer passionate in creating robust, user-friendly web applications that make a difference.
                     </div>                         
                     <div style={{ paddingTop: '2rem' }}>
@@ -229,11 +260,11 @@ function App() {
             </div>
             <div>
                 <div className={isSm ? classes.iconRootNarrow : classes.iconRoot} style={height < 550 ? { position: 'relative', paddingTop: '2rem'} : {position: 'absolute', bottom: 15}}>
-                    <IconButton style={{width: '2rem'}} onClick={() => window.open('https://www.linkedin.com/in/ajadversalo', '_blank')}>
-                        {<LinkedInIcon style={{fill: '#000'}} />}
+                    <IconButton onClick={() => window.open('https://www.linkedin.com/in/ajadversalo', '_blank')}>
+                        {<LinkedInIcon className={classes.icon}/>}
                     </IconButton>
-                    <IconButton style={{ width: '2rem' }} onClick={()=>window.open('https://github.com/ajadversalo', '_blank')}>
-                        {<GitHubIcon style={{ fill: '#000' }} />}
+                    <IconButton onClick={()=>window.open('https://github.com/ajadversalo', '_blank')}>
+                        {<GitHubIcon className={classes.icon} />}
                     </IconButton>
                 </div>
             </div>
@@ -243,6 +274,7 @@ function App() {
                 onClose={()=>{setOpen(false)}}
                 onOpen={()=>{setOpen(true)}}
                 style={{width:'100%' }}
+                classes={{ paper: classes.drawerPaper }}
             >
                 <div className={isSm ? classes.drawerNarrow : classes.drawer}>
                     <div className={classes.drawerHeader}>
@@ -277,7 +309,7 @@ function App() {
                     onClose={handleClosePopup}>
                         {popupMsg}
                 </MuiAlert>
-          </Snackbar>
+          </Snackbar>          
         </div>
     );
 }
