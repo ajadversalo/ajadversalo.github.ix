@@ -26,13 +26,30 @@ const useStyles = makeStyles()(() => ({
     textBox: {
         width: '100%',
         margin: '0.5rem 0',
-        backgroundColor: '#FFF'
+        backgroundColor: '#FFF',
+        borderRadius: 0
     },
     buttonSendRoot: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'end'
-    }
+    },
+    input :{
+        borderRadius: 0
+    },
+    button :{
+        marginTop: '1rem',
+        padding: '0.5rem 1rem', 
+        color: '#000', 
+        border: '2px solid #FFF',
+        borderRadius: 0,
+        fontFamily: 'Wix MadeFor Display',
+        backgroundColor: '#EBEBEB',
+        '&:hover': {
+            backgroundColor: '#FFF',
+            color: '#000'
+        },
+    },
 }));
 
 function Contact(props) {
@@ -135,39 +152,52 @@ function Contact(props) {
                     <EmailIcon/>
                     <Typography className={classes.contactInfoItemValue}>ajadvers@gmail.com</Typography>
                 </div>            
-                <TextField
-                    name='from-name'
-                    label="Your Name" 
-                    required
-                    className={classes.textBox}
-                    value={fromName}
-                    onChange={handleInputChange}
-                />
-                <TextField
-                    name='from-email'
-                    label="Your Email" 
-                    required
-                    value={fromEmail} 
-                    className={classes.textBox}
-                    onChange={handleInputChange}
-                />
-                <TextField
-                    name='message' 
-                    label="Your Message" 
-                    required 
-                    className={classes.textBox}
-                    multiline
-                    maxRows={4}
-                    inputProps={{
-                        style: {
-                            height: "5rem",
-                        },
-                    }}
-                    value={message}
-                    onChange={handleInputChange}
-                />
+                <div style={{paddingTop: '1.5rem'}}>
+                    <TextField
+                        name='from-name'
+                        label="Your Name" 
+                        required
+                        className={classes.textBox}
+                        value={fromName}
+                        onChange={handleInputChange}
+                        InputProps={{
+                            className: classes.input,
+                        }}
+                    />
+                    <TextField
+                        name='from-email'
+                        label="Your Email" 
+                        required
+                        value={fromEmail} 
+                        className={classes.textBox}
+                        onChange={handleInputChange}
+                        InputProps={{
+                            className: classes.input,
+                        }}
+                    />
+                    <TextField
+                        name='message' 
+                        label="Your Message" 
+                        required 
+                        className={classes.textBox}
+                        multiline
+                        maxRows={4}
+                        InputProps={{
+                            className: classes.input,
+                            style: {
+                                height: "5rem",
+                            },
+                        }}
+                        value={message}
+                        onChange={handleInputChange}
+                    />
+                </div>
                 <div className={classes.buttonSendRoot}>
-                    <Button onClick={handleButtonSend}>Send</Button>
+                    <Button 
+                        onClick={handleButtonSend}
+                        className={classes.button}>
+                        Send
+                    </Button>
                 </div>
                 {/* Hidden. Required by emailjs, values are mapped to state. */}
                 <form ref={form} onSubmit={handleSendEmail} style={{visibility: 'hidden'}}>

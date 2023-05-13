@@ -4,7 +4,6 @@ import './App.css';
 import { makeStyles } from 'tss-react/mui';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
@@ -161,7 +160,6 @@ function App() {
     const [popupMsgType, setPopupMsgType] = useState('error');
     const [openPopup, setOpenPopup] = useState(false);
     const [height, setHeight] = useState(window.innerHeight);
-
 
     useEffect(() => {
         document.title ='AJ - Full-Stack Dev';
