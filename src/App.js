@@ -203,24 +203,56 @@ function App() {
         return(
             <div style={{padding: '1rem', paddingTop: '1rem'}}>            
                 <h1>Projects</h1>
-                <p><span style={{fontSize: '1.5rem'}}>ReviewGx</span> is a Medication Therapy Management tool that looks at 
-                    evidence-based pharmacogenomics, deprescribing insights, clinical 
-                    lab data and other patient-specific information to help you perform 
-                    comprehensive medication reviews and keep patients safe and healthy.
+                <p>Below are the applications we've worked on either as 
+                    part of the GenXys product suite or services that support it.
+                    All of which are built using ReactJS, C#, .Net and MS SQL stack.
                 </p>
-                <p><span style={{fontSize: '1.5rem'}}>TreatGx</span> generates medication options that are safe and effective for you by combining 
-                    your genetics with up-to-date clinical evidence and information that you enter. 
-                    TreatGx has been developed to facilitate the shared decision-making process 
-                    between you and your healthcare professional.
-                </p>
-                <p><span style={{fontSize: '1.5rem'}}>Alogogen</span> is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. 
-                    With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. 
-                    This application is exclusively designed for internal use by our experienced algorithm team, 
-                    providing them with an efficient solution for generating complex algorithms.</p>
-                <p><span style={{fontSize: '1.5rem'}}>TrackGx</span> is an application which allows you to effortlessly monitor the efficacy of your prescriptions 
-                    by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.</p>
-                <p><span style={{fontSize: '1.5rem'}}>LabGx</span> empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. 
-                    With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.</p>
+                
+                <div>
+                    <div>ReviewGx</div>                
+                    <div style={{display: 'none'}}> is a Medication Therapy Management tool that looks at 
+                        evidence-based pharmacogenomics, deprescribing insights, clinical 
+                        lab data and other patient-specific information to help you perform 
+                        comprehensive medication reviews and keep patients safe and healthy.
+                    </div>
+                </div>
+
+                <div>
+                    <div>TreatGx</div>                
+                    <div style={{display: 'none'}}> generates medication options that are safe and effective for you by combining 
+                        your genetics with up-to-date clinical evidence and information that you enter. 
+                        TreatGx has been developed to facilitate the shared decision-making process 
+                        between you and your healthcare professional.
+                    </div>
+                </div>
+
+                <div>
+                    <div>Alogogen</div>                
+                    <div style={{display: 'none'}}> is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. 
+                        With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. 
+                        This application is exclusively designed for internal use by our experienced algorithm team, 
+                        providing them with an efficient solution for generating complex algorithms.
+                    </div>
+                </div>
+                <div>
+                    <div>TrackGx</div>                
+                    <div style={{display: 'none'}}> is an application which allows you to effortlessly monitor the efficacy of your prescriptions 
+                        by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.
+                    </div>
+                </div>
+
+                <div>
+                    <div>LabGx</div>                
+                    <div style={{display: 'none'}}> empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. 
+                        With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.
+                    </div>
+                </div>
+                <div>
+                    <div>PatientDashboard</div>                
+                    <div style={{display: 'none'}}> empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. 
+                        With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.
+                    </div>
+                </div>
             </div>
         );
     }
