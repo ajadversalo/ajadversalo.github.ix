@@ -159,11 +159,21 @@ const useStyles = makeStyles()(() => ({
         // },
     },
     tooltip: {
-        backgroundColor: '#FFFFE0',
+        "&:before": {
+            border: "1px solid red"
+          },
+        backgroundColor: '#FFF',
         color: '#000',
         fontFamily: 'Wix MadeFor Display',
-        padding: '1rem'
-    }
+        padding: '0.5rem',
+        border: "1px solid darkgrey"
+    },
+    tooltipArrow: {
+        "&:before": {
+          border: "1px solid darkgrey"
+        },
+        color: '#FFF'
+      },
 }));
 
 function App() {
@@ -221,7 +231,7 @@ function App() {
             {title: 'Alogogen', desc: 'Algogen is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. This application is exclusively designed for internal use by our experienced algorithm team, providing them with an efficient solution for generating complex algorithms.'},
             {title: 'TrackGx', desc: 'TrackGx is an application which allows you to effortlessly monitor the efficacy of your prescriptions by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.'},
             {title: 'LabGx', desc: 'LabGx empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.'},         
-            {title: 'Patient Dashboard', desc: ''}
+            {title: 'Patient Dashboard', desc: 'The Patient Dashboard is the petient portal where they can see their lab reports and medical reviews.'}
         ];
 
         // const productList = [
@@ -243,7 +253,7 @@ function App() {
 
         const Product = (props) => {
             return(
-                <Tooltip classes={{tooltip: classes.tooltip}} title={<span style={{fontSize: '1rem'}} >{props.desc}</span>}>
+                <Tooltip arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow }} title={<span style={{fontSize: '0.8rem'}} >{props.desc}</span>}>
                     <Card style={{height: '1.5rem', padding: '1rem', margin: '0.8rem 0.5rem'}}>
                         {props.title}
                     </Card>
@@ -255,12 +265,12 @@ function App() {
             <div style={{padding: '1rem', paddingTop: '1rem'}}>            
                 <h1>Projects</h1>
                 <p>Below are the applications we've worked on either as 
-                    part of the GenXys product suite or services that support it.
+                    part of the GenXys Product Suite or services that support it.
                     All of which are built using ReactJS, C#, .Net and MS SQL stack.
-                    Hover over the product cards to show their descriptions.
+                    (Hover over the product cards to show their descriptions).
                 </p>
                 <div className={classes.projectPortal}>
-                    <Tooltip classes={{tooltip: classes.tooltip}} title={<span style={{fontSize: '1rem'}} >{'As the main entry point to the GenXys Application Suite wherein users are able to browse, select, and purchase licenses for a range of software products. https://cdn.portal.genxys.com/'}</span>}>
+                    <Tooltip classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow }} title={<span style={{fontSize: '0.8rem'}} >{'The GenXys Portal encapsulates all product offerings. Here users are able to select, and purchase licenses for a range of healthcare applications. The canadian site is hosted on https://cdn.portal.genxys.com/ and https://us.portal.genxys.com/ for the US site'}</span>}>
                         <h3 style={{padding: '1rem 0 0 1rem'}}>User Portal</h3>
                     </Tooltip>                   
                     <div style={{backgroundColor: 'lightgrey', maxWidth: '85%', margin: '0 auto', height: '80%', borderRadius: '8px'}}>
