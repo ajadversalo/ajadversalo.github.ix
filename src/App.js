@@ -15,6 +15,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import Tooltip from '@mui/material/Tooltip';
+import Card from '@mui/material/Card';
 
 import Contact from './Contact';
 import Resume from './Resume';
@@ -150,6 +151,19 @@ const useStyles = makeStyles()(() => ({
     drawerPaper: {
         backgroundColor: '#CED0CE'
     },
+    projectPortal: {
+         backgroundColor: '#FFF',
+        // borderRadius: '3px',
+        // '&:hover': {
+        //     backgroundColor: 'red'
+        // },
+    },
+    tooltip: {
+        backgroundColor: '#FFFFE0',
+        color: '#000',
+        fontFamily: 'Wix MadeFor Display',
+        padding: '1rem'
+    }
 }));
 
 function App() {
@@ -200,58 +214,73 @@ function App() {
     }
 
     const Projects = () => {
+
+        const productList = [
+            {title: 'TreatGx', desc: 'TreatGx generates medication options that are safe and effective for you by combining your genetics with up-to-date clinical evidence and information that you enter.'},
+            {title: 'ReviewGx', desc: 'ReviewGx is a Medication Therapy Management tool that looks at evidence-based pharmacogenomics, deprescribing insights and clinical lab data to help you perform comprehensive medication reviews.'},
+            {title: 'Alogogen', desc: 'Algogen is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. This application is exclusively designed for internal use by our experienced algorithm team, providing them with an efficient solution for generating complex algorithms.'},
+            {title: 'TrackGx', desc: 'TrackGx is an application which allows you to effortlessly monitor the efficacy of your prescriptions by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.'},
+            {title: 'LabGx', desc: 'LabGx empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.'},         
+            {title: 'Patient Dashboard', desc: ''}
+        ];
+
+        // const productList = [
+        //     {title: 'TreatGx', desc: 'TreatGx generates medication options that are safe and effective for you by combining your genetics with up-to-date clinical evidence and information that you enter. TreatGx has been developed to facilitate the shared decision-making process between you and your healthcare professional.'},
+        //     {title: 'ReviewGx', desc: 'ReviewGx is a Medication Therapy Management tool that looks at evidence-based pharmacogenomics, deprescribing insights, clinical lab data and other patient-specific information to help you perform comprehensive medication reviews and keep patients safe and healthy.'},
+        //     {title: 'Alogogen', desc: 'Algogen is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. This application is exclusively designed for internal use by our experienced algorithm team, providing them with an efficient solution for generating complex algorithms.'},
+        //     {title: 'TrackGx', desc: 'TrackGx is an application which allows you to effortlessly monitor the efficacy of your prescriptions by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.'},
+        //     {title: 'LabGx', desc: 'LabGx empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.'},         
+        //     {title: 'Patient Dashboard', desc: ''}
+        // ];
+
+        // const Product = (props) => {
+        //     return(
+        //         <div style={{border: '1px solid #000', width: '6rem', textAlign: 'center', padding: '0.5rem', height: '1.5rem', margin: '1rem'}}>
+        //             <div style={{marginTop: props.title === 'Patient Dashboard' ? '-0.6rem' : 0}}>{props.title}</div>
+        //         </div>
+        //     );
+        // }
+
+        const Product = (props) => {
+            return(
+                <Tooltip classes={{tooltip: classes.tooltip}} title={<span style={{fontSize: '1rem'}} >{props.desc}</span>}>
+                    <Card style={{height: '1.5rem', padding: '1rem', margin: '0.8rem 0.5rem'}}>
+                        {props.title}
+                    </Card>
+                </Tooltip>
+            );
+        }
+
         return(
             <div style={{padding: '1rem', paddingTop: '1rem'}}>            
                 <h1>Projects</h1>
                 <p>Below are the applications we've worked on either as 
                     part of the GenXys product suite or services that support it.
                     All of which are built using ReactJS, C#, .Net and MS SQL stack.
+                    Hover over the product cards to show their descriptions.
                 </p>
-                
-                <div>
-                    <div>ReviewGx</div>                
-                    <div style={{display: 'none'}}> is a Medication Therapy Management tool that looks at 
-                        evidence-based pharmacogenomics, deprescribing insights, clinical 
-                        lab data and other patient-specific information to help you perform 
-                        comprehensive medication reviews and keep patients safe and healthy.
+                <div className={classes.projectPortal}>
+                    <Tooltip classes={{tooltip: classes.tooltip}} title={<span style={{fontSize: '1rem'}} >{'As the main entry point to the GenXys Application Suite wherein users are able to browse, select, and purchase licenses for a range of software products. https://cdn.portal.genxys.com/'}</span>}>
+                        <h3 style={{padding: '1rem 0 0 1rem'}}>User Portal</h3>
+                    </Tooltip>                   
+                    <div style={{backgroundColor: 'lightgrey', maxWidth: '85%', margin: '0 auto', height: '80%', borderRadius: '8px'}}>
+                        <h3 style={{padding: '1rem 0 0 1rem'}}>GenXys Product Suite</h3>
+                        <div style={{
+                            width: '90%', 
+                            display: 'flex', 
+                            flexDirection: 'row', 
+                            justifyContent: 'space-between', 
+                            minHeight: '9rem', 
+                            flexWrap: 'wrap', 
+                            paddingBottom: '0.5rem', 
+                            margin: 'auto auto'
+                            }}>
+                            {productList.map((p) => {
+                                return <Product title={p.title} desc={p.desc}/>
+                            })}
+                        </div>
                     </div>
-                </div>
-
-                <div>
-                    <div>TreatGx</div>                
-                    <div style={{display: 'none'}}> generates medication options that are safe and effective for you by combining 
-                        your genetics with up-to-date clinical evidence and information that you enter. 
-                        TreatGx has been developed to facilitate the shared decision-making process 
-                        between you and your healthcare professional.
-                    </div>
-                </div>
-
-                <div>
-                    <div>Alogogen</div>                
-                    <div style={{display: 'none'}}> is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. 
-                        With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. 
-                        This application is exclusively designed for internal use by our experienced algorithm team, 
-                        providing them with an efficient solution for generating complex algorithms.
-                    </div>
-                </div>
-                <div>
-                    <div>TrackGx</div>                
-                    <div style={{display: 'none'}}> is an application which allows you to effortlessly monitor the efficacy of your prescriptions 
-                        by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.
-                    </div>
-                </div>
-
-                <div>
-                    <div>LabGx</div>                
-                    <div style={{display: 'none'}}> empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. 
-                        With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.
-                    </div>
-                </div>
-                <div>
-                    <div>PatientDashboard</div>                
-                    <div style={{display: 'none'}}> empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. 
-                        With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.
-                    </div>
+                    <div style={{backgroundColor: 'transparent', height: '2rem'}}></div>
                 </div>
             </div>
         );
