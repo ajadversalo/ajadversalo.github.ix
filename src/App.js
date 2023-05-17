@@ -16,6 +16,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import Tooltip from '@mui/material/Tooltip';
 import Card from '@mui/material/Card';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import Contact from './Contact';
 import Resume from './Resume';
@@ -187,6 +191,7 @@ function App() {
     const [popupMsgType, setPopupMsgType] = useState('error');
     const [openPopup, setOpenPopup] = useState(false);
     const [height, setHeight] = useState(window.innerHeight);
+    const [expanded, setExpanded] = useState('panel1');
 
     useEffect(() => {
         document.title ='AJ - Full-Stack Dev';
@@ -225,13 +230,54 @@ function App() {
 
     const Projects = () => {
 
+        const ProductCard = (props) => {            
+            return (
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <div style={{minWidth: '7rem', maxWidth: '7rem'}}>
+                        <Card style={{padding: '0.1rem 0.2rem', margin: '0.5rem 0.5rem'}}>
+                            <div style={{textAlign: 'center', paddingBottom: '0.2rem'}}>{props.title}</div>
+                            <img src={`./productImages/${props.image}`} style={{maxWidth: '100%'}}></img>
+                        </Card>
+                    </div>
+                    <div style={{fontSize: '0.7rem', minWidth: '10rem', maxWidth: '30rem', paddingTop: '0.5rem'}}>
+                        {props.desc}
+                    </div>
+                </div>
+
+            )
+        }
+
         const productList = [
-            {title: 'TreatGx', desc: 'TreatGx generates medication options that are safe and effective for you by combining your genetics with up-to-date clinical evidence and information that you enter.'},
-            {title: 'ReviewGx', desc: 'ReviewGx is a Medication Therapy Management tool that looks at evidence-based pharmacogenomics, deprescribing insights and clinical lab data to help you perform comprehensive medication reviews.'},
-            {title: 'Alogogen', desc: 'Algogen is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. This application is exclusively designed for internal use by our experienced algorithm team, providing them with an efficient solution for generating complex algorithms.'},
-            {title: 'TrackGx', desc: 'TrackGx is an application which allows you to effortlessly monitor the efficacy of your prescriptions by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.'},
-            {title: 'LabGx', desc: 'LabGx empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.'},         
-            {title: 'Patient Dashboard', desc: 'The Patient Dashboard is the petient portal where they can see their lab reports and medical reviews.'}
+            {
+                title: 'TreatGx', 
+                desc: 'TreatGx generates medication options that are safe and effective for you by combining your genetics with up-to-date clinical evidence and information that you enter.',
+                image: 'treatgx.jpg'
+            },                
+            {
+                title: 'ReviewGx', 
+                desc: 'ReviewGx is a Medication Therapy Management tool that looks at evidence-based pharmacogenomics, deprescribing insights and clinical lab data to help you perform comprehensive medication reviews.',
+                image: 'reviewgx.jpg'
+            },
+            {
+                title: 'Alogogen', 
+                desc: 'Algogen is a powerful algorithmic ',
+                image: 'algogen.jpg'
+            },
+            {
+                title: 'TrackGx', 
+                desc: 'TrackGx is an application which allows you to effortlessly monitor the efficacy of your prescriptions by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.',
+                image: 'trackgx.jpg'
+            },
+            {
+                title: 'LabGx', 
+                desc: 'LabGx empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.',
+                image: 'labgx.jpg'
+            },         
+            {
+                title: 'Patient Dashboard', 
+                desc: 'The Patient Dashboard is the petient portal where they can see their lab reports and medical reviews.',
+                image: 'patientDashboard.jpg'
+            }
         ];
 
         // const productList = [
@@ -251,47 +297,45 @@ function App() {
         //     );
         // }
 
-        const Product = (props) => {
-            return(
-                <Tooltip arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow }} title={<span style={{fontSize: '0.8rem'}} >{props.desc}</span>}>
-                    <Card style={{height: '1.5rem', padding: '1rem', margin: '0.8rem 0.5rem'}}>
-                        {props.title}
-                    </Card>
-                </Tooltip>
-            );
-        }
+        const handleChange = (panel) => (e, isExpanded) => {
+            if(panel === 'panel2'){
+                setExpanded(isExpanded ? 'panel2' : 'panel1');
+            }
+            if(panel === 'panel1'){
+                setExpanded(isExpanded ? 'panel1' : 'panel2');
+            }
+        };
 
         return(
-            <div style={{padding: '1rem', paddingTop: '1rem'}}>            
+            <div style={{padding: '1rem', paddingTop: '1rem', backgroundColor: '#EBEBEB'}}>            
                 <h1>Projects</h1>
-                <p>Below are the applications we've worked on either as 
-                    part of the GenXys Product Suite or services that support it.
-                    All of which are built using ReactJS, C#, .Net and MS SQL stack.
-                    (Hover over the product cards to show their descriptions).
-                </p>
-                <div className={classes.projectPortal}>
-                    <Tooltip classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow }} title={<span style={{fontSize: '0.8rem'}} >{'The GenXys Portal encapsulates all product offerings. Here users are able to select, and purchase licenses for a range of healthcare applications. The canadian site is hosted on https://cdn.portal.genxys.com/ and https://us.portal.genxys.com/ for the US site'}</span>}>
-                        <h3 style={{padding: '1rem 0 0 1rem'}}>User Portal</h3>
-                    </Tooltip>                   
-                    <div style={{backgroundColor: 'lightgrey', maxWidth: '85%', margin: '0 auto', height: '80%', borderRadius: '8px'}}>
-                        <h3 style={{padding: '1rem 0 0 1rem'}}>GenXys Product Suite</h3>
-                        <div style={{
-                            width: '90%', 
-                            display: 'flex', 
-                            flexDirection: 'row', 
-                            justifyContent: 'space-between', 
-                            minHeight: '9rem', 
-                            flexWrap: 'wrap', 
-                            paddingBottom: '0.5rem', 
-                            margin: 'auto auto'
-                            }}>
-                            {productList.map((p) => {
-                                return <Product title={p.title} desc={p.desc}/>
-                            })}
-                        </div>
-                    </div>
-                    <div style={{backgroundColor: 'transparent', height: '2rem'}}></div>
-                </div>
+                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
+                    >
+                        GenXys Applications              
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <div style={{fontSize: '0.8rem', paddingLeft: '0.5rem', paddingBottom: '1rem'}}>Together with 3 other developers, we've built several web applications for GenXys utilizing ReactJS, C#, .Net Core, MS SQL and Azure.</div>
+                        {productList.map((p) => {
+                            return (<ProductCard title={p.title} desc={p.desc} image={p.image}/>)
+                        })}
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
+                    >
+                        Personal                    
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        
+                    </AccordionDetails>
+                </Accordion>              
             </div>
         );
     }
