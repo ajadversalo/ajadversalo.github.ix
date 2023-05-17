@@ -88,21 +88,24 @@ const useStyles = makeStyles()(() => ({
     drawer: {
         height: '100%',
         width: '40rem',
-        backgroundColor: '#EBEBEB'
+        //backgroundColor: '#EBEBEB'
+        backgroundColor: '#282C2F',
+        color: '#FCFFFF'
     },
     drawerNarrow: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#EBEBEB'   
+        backgroundColor: '#282C2F',
+        color: '#FCFFFF'
     },
     drawerHeader: {
-        backgroundColor: '#C0C0C0', 
+        backgroundColor: '#282C2F', 
         width: '100%', 
         overflow: 'overlay', 
         display: 'flex', 
         flexDirection: 'row', 
         justifyContent: 'start',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between'        
     },
     aboutRoot: {
         padding: '1rem 1.5rem 1rem 1rem', 
@@ -153,7 +156,12 @@ const useStyles = makeStyles()(() => ({
         fontWeight: 600
     },
     drawerPaper: {
-        backgroundColor: '#CED0CE'
+        backgroundColor: '#CED0CE',
+        '&::-webkit-scrollbar': {
+            display: 'none'
+        },
+        // Firefox
+        scrollbarWidth: 'none'
     },
     projectPortal: {
          backgroundColor: '#FFF',
@@ -213,17 +221,18 @@ function App() {
         return(
             <div className={classes.aboutRoot}>            
                 <Avatar alt="AJAdversalo" src="face.jfif" />
-                <h1>More about me...</h1>
-                <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
-                    opportinities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
-                    A month after completing the program in 2019, I was lucky enough to be hired at GenXys Healthcare Systems as a full-stack developer.</p>
-                <p>As a software developer, one of my key strengths is my attention to detail. I firmly believe that the little things 
-                    matter, and I always strive to ensure that my code is clean, well-organized, and easy to maintain. Whether it be front-end 
-                    or back-end I always find ways to optimize code and improve my skills in the process.</p>    
-                <p>Outside of work, I enjoy photography taking snaps here and there especially wide open sceneries.</p>
-                <p>I strive to continue and keep learning new languages, frameworks and technologies to broaden my skills and be a better developer in general.
-                    If you're interested in working with me, please don't hesitate to get in touch!
-                </p>
+                <div style={{padding: '0 1rem'}}>
+                    <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
+                        opportinities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
+                        A month after completing the program in 2019, I was lucky enough to be hired at GenXys Healthcare Systems as a full-stack developer.</p>
+                    <p>As a software developer, one of my key strengths is my attention to detail. I firmly believe that the little things 
+                        matter, and I always strive to ensure that my code is clean, well-organized, and easy to maintain. Whether it be front-end 
+                        or back-end I always find ways to optimize code and improve my skills in the process.</p>    
+                    <p>Outside of work, I enjoy photography taking snaps here and there especially wide open sceneries.</p>
+                    <p>I strive to continue and keep learning new languages, frameworks and technologies to broaden my skills and be a better developer in general.
+                        If you're interested in working with me, please don't hesitate to get in touch!
+                    </p>
+                </div>
             </div>
         );
     }
@@ -260,22 +269,22 @@ function App() {
             },
             {
                 title: 'Alogogen', 
-                desc: 'Algogen is a powerful algorithmic ',
+                desc: 'Algogen is an internal application used by the algorithm developers to create complex pharmacogenetic algorithms.',
                 image: 'algogen.jpg'
             },
             {
                 title: 'TrackGx', 
-                desc: 'TrackGx is an application which allows you to effortlessly monitor the efficacy of your prescriptions by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.',
+                desc: 'TrackGx is mobile first application which allows patients to effortlessly monitor the efficacy of their prescriptions.',
                 image: 'trackgx.jpg'
             },
             {
                 title: 'LabGx', 
-                desc: 'LabGx empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.',
+                desc: 'LabGx enables uploading genetic data from laboratory results.',
                 image: 'labgx.jpg'
             },         
             {
                 title: 'Patient Dashboard', 
-                desc: 'The Patient Dashboard is the petient portal where they can see their lab reports and medical reviews.',
+                desc: 'The Patient Dashboard is the petient portal where they can see their lab reports and medication reviews.',
                 image: 'patientDashboard.jpg'
             }
         ];
@@ -307,15 +316,17 @@ function App() {
         };
 
         return(
-            <div style={{padding: '1rem', paddingTop: '1rem', backgroundColor: '#EBEBEB'}}>            
-                <h1>Projects</h1>
-                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+            <div style={{paddingTop: '1rem', backgroundColor: '#FFF'}}>            
+                <div style={{paddingLeft: '1.5rem', margin: 0, textAlign: 'center'}}>
+                    <h2>Projects</h2>
+                </div>
+                <Accordion style={{backgroundColor: 'transparent', boxShadow: 'none'}} defaultExpanded={true}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1bh-content"
-                        id="panel1bh-header"
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
                     >
-                        GenXys Applications              
+                        <div style={{paddingLeft: '0.5rem', color: '#55828B'}}>GenXys Applications</div>
                     </AccordionSummary>
                     <AccordionDetails>
                         <div style={{fontSize: '0.8rem', paddingLeft: '0.5rem', paddingBottom: '1rem'}}>Together with 3 other developers, we've built several web applications for GenXys utilizing ReactJS, C#, .Net Core, MS SQL and Azure.</div>
@@ -324,18 +335,19 @@ function App() {
                         })}
                     </AccordionDetails>
                 </Accordion>
-                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <Accordion style={{backgroundColor: 'transparent', boxShadow: 'none'}}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1bh-content"
-                        id="panel1bh-header"
+                        aria-controls="panel1b-content"
+                        id="panel1b-header"
+                        style={{borderBottom: '1px solid lightgrey'}}
                     >
-                        Personal                    
+                        <div style={{paddingLeft: '0.5rem', color: '#55828B'}}>Personal</div>
                     </AccordionSummary>
                     <AccordionDetails>
-                        
+                    
                     </AccordionDetails>
-                </Accordion>              
+                </Accordion>        
             </div>
         );
     }
@@ -405,7 +417,7 @@ function App() {
                             onClick={()=>{setOpen(false); setPage('');}}
                             style={{paddingLeft: '0.8rem'}}                        
                         >
-                            {<CloseIcon/>}
+                            {<CloseIcon style={{fill: '#FFF'}}/>}
                         </IconButton>
                         { page === 'resume' &&
                             <Tooltip title='download' placement='right'>
