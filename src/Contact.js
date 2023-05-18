@@ -143,7 +143,7 @@ function Contact(props) {
 
     return(
         <div>
-            <div style={{margin: '1rem', padding: '0 1rem'}}>          
+            <div style={{margin: '1rem', padding: '0 0.5rem'}}>          
                 <h2 className={classes.title}>Contact Me</h2>
                 <div className={classes.contactInfoItem}>
                     <LocalPhoneIcon/>
