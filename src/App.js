@@ -82,17 +82,17 @@ const useStyles = makeStyles()(() => ({
     },
     drawer: {        
         width: '40rem',
-        backgroundColor: '#455561',
+        backgroundColor: '#EEF0EB',
         color: '#FCFFFF'
     },
     drawerNarrow: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#455561',
+        backgroundColor: '#EEF0EB',
         color: '#FCFFFF'
     },
     drawerHeader: {
-        backgroundColor: '#455561', 
+        backgroundColor: '#EEF0EB', 
         width: '100%', 
         overflow: 'overlay', 
         display: 'flex', 
@@ -101,7 +101,7 @@ const useStyles = makeStyles()(() => ({
         justifyContent: 'space-between'        
     },
     aboutRoot: {
-        padding: '0 1.5rem 1rem 1rem', 
+        padding: '0 0.5rem 0 0.5rem', 
     },
     projectRoot: {
         padding: '0 1.5rem 1rem 0.5rem', 
@@ -151,7 +151,7 @@ const useStyles = makeStyles()(() => ({
         fontWeight: 600
     },
     drawerPaper: {
-        backgroundColor: '#455561',
+        backgroundColor: '#EEF0EB',
         '&::-webkit-scrollbar': {
             display: 'none'
         },
@@ -180,7 +180,16 @@ const useStyles = makeStyles()(() => ({
           border: "1px solid darkgrey"
         },
         color: '#FFF'
-      },
+    },
+    title:{
+        color: '#BB4430'
+    },
+    closeButton: {
+        fill: '#587792'
+    },
+    contentText: {
+        color: '#587792'
+    }
 }));
 
 function App() {
@@ -215,17 +224,19 @@ function App() {
         return(
             <div className={classes.aboutRoot} style={{height: '100%'}}>            
                 <div style={{padding: '0 1rem'}}>
-                    <h2>About Me</h2>
-                    <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
-                        opportunities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
-                        A month after completing the program in 2019, I was lucky enough to be hired at GenXys Healthcare Systems as a full-stack developer.</p>
-                    <p>As a software developer, one of my key strengths is my attention to detail. I firmly believe that the little things 
-                        matter, and I always strive to ensure that my code is clean, well-organized, and easy to maintain. Whether it be front-end 
-                        or back-end I always find ways to optimize code and improve my skills in the process.</p>    
-                    <p>Outside of work, I enjoy photography taking snaps here and there especially wide open sceneries.</p>
-                    <p>I strive to continue and keep learning new languages, frameworks and technologies to broaden my skills and be a better developer in general.
-                        If you're interested in working with me, please don't hesitate to get in touch!
-                    </p>
+                    <h2 className={classes.title}>About Me</h2>
+                    <div className={classes.contentText}>
+                        <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
+                            opportunities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
+                            A month after completing the program in 2019, I was lucky enough to be hired at GenXys Healthcare Systems as a full-stack developer.</p>
+                        <p>As a software developer, one of my key strengths is my attention to detail. I firmly believe that the little things 
+                            matter, and I always strive to ensure that my code is clean, well-organized, and easy to maintain. Whether it be front-end 
+                            or back-end I always find ways to optimize code and improve my skills in the process.</p>    
+                        <p>Outside of work, I enjoy photography taking snaps here and there especially wide open sceneries.</p>
+                        <p>I strive to continue and keep learning new languages, frameworks and technologies to broaden my skills and be a better developer in general.
+                            If you're interested in working with me, please don't hesitate to get in touch!
+                        </p>
+                    </div>
                 </div>
             </div>
         );
@@ -296,7 +307,7 @@ function App() {
                             onClick={()=>{setOpen(false); setPage('');}}
                             style={{paddingLeft: '0.8rem'}}                        
                         >
-                            {<CloseIcon style={{fill: '#FFF'}}/>}
+                            {<CloseIcon className={classes.closeButton}/>}
                         </IconButton>
                         { page === 'resume' &&
                             <Tooltip title='download' placement='right'>

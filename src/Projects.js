@@ -8,8 +8,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles()(() => ({
     root: {
-        padding: '0 1.5rem 1rem 1rem',
-    }, 
+        padding: '0 0.5rem 0 0.5rem',
+    },
+    title:{
+        color: '#BB4430'
+    },
+    contentText: {
+        color: '#587792'
+    }
 }));
 
 function Projects() {
@@ -22,11 +28,11 @@ function Projects() {
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{minWidth: '7rem', maxWidth: '7rem'}}>
                     <Card style={{padding: '0.1rem 0.2rem', margin: '0.5rem 0.5rem'}}>
-                        <div style={{textAlign: 'center', paddingBottom: '0.2rem'}}>{props.title}</div>
+                        <div className={classes.contentText} style={{textAlign: 'center', paddingBottom: '0.2rem'}}>{props.title}</div>
                         <img src={`./productImages/${props.image}`} style={{maxWidth: '100%'}}></img>
                     </Card>
                 </div>
-                <div style={{fontSize: '0.8rem', minWidth: '10rem', maxWidth: '30rem', paddingTop: '0.5rem', color: '#FFF'}}>
+                <div className={classes.contentText} style={{fontSize: '0.8rem', minWidth: '10rem', maxWidth: '30rem', paddingTop: '0.5rem'}}>
                     {props.desc}
                 </div>
             </div>
@@ -78,17 +84,17 @@ function Projects() {
 
     return(
         <div className={classes.root}>                                           
-            <h2 style={{color: '#000', paddingLeft: '1.5rem', color: '#FFF', marginBottom: 0}}>Projects</h2>                
+            <h2 className={classes.title} style={{paddingLeft: '1.5rem', marginBottom: 0}}>Projects</h2>                
             <Accordion style={{backgroundColor: 'transparent', boxShadow: 'none'}} defaultExpanded={true}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon style={{fill: '#FFF'}}/>}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <div style={{paddingLeft: '0.5rem', color: '#FFF'}}>GenXys Applications</div>
+                    <div className={classes.contentText} style={{paddingLeft: '0.5rem'}}>GenXys Applications</div>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <div style={{fontSize: '0.8rem', paddingLeft: '0.5rem', paddingBottom: '1rem', color: '#FFF'}}>Together with 3 other developers, we've built several web applications for GenXys utilizing ReactJS, C#, .Net Core, MS SQL and Azure.</div>
+                    <div className={classes.contentText} style={{fontSize: '0.8rem', paddingLeft: '0.5rem', paddingBottom: '1rem'}}>Together with 3 other developers, we've built several web applications for GenXys utilizing ReactJS, C#, .Net Core, MS SQL and Azure.</div>
                     {productList.map((p) => {
                         return (<ProductCard title={p.title} desc={p.desc} image={p.image}/>)
                     })}
@@ -101,7 +107,7 @@ function Projects() {
                     id="panel1b-header"
                     style={{borderBottom: '1px solid lightgrey'}}
                 >
-                    <div style={{paddingLeft: '0.5rem', color: '#FFF'}}>Personal</div>
+                    <div className={classes.contentText} style={{paddingLeft: '0.5rem'}}>Personal</div>
                 </AccordionSummary>
                 <AccordionDetails>                
                 </AccordionDetails>

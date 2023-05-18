@@ -16,7 +16,8 @@ const useStyles = makeStyles()(() => ({
     contactInfoItem: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        color: '#587792'
     },
     contactInfoItemValue: {
         textAlign: 'left',
@@ -26,7 +27,7 @@ const useStyles = makeStyles()(() => ({
     textBox: {
         width: '100%',
         margin: '0.5rem 0',
-        backgroundColor: '#FFF',
+        backgroundColor: '#EEF0EB',
         borderRadius: 0
     },
     buttonSendRoot: {
@@ -40,16 +41,21 @@ const useStyles = makeStyles()(() => ({
     button :{
         marginTop: '1rem',
         padding: '0.5rem 1rem', 
-        color: '#000', 
-        border: '2px solid #FFF',
+        color: '#587792', 
+        border: '2px solid #587792',
         borderRadius: 0,
         fontFamily: 'Wix MadeFor Display',
-        backgroundColor: '#EBEBEB',
+        backgroundColor: '#EEF0EB',
         '&:hover': {
-            backgroundColor: '#FFF',
-            color: '#000'
+            backgroundColor: '#FFF'
         },
     },
+    title:{
+        color: '#BB4430'
+    },
+    contentText: {
+        color: '#587792'
+    }
 }));
 
 function Contact(props) {
@@ -138,8 +144,8 @@ function Contact(props) {
 
     return(
         <div className={classes.root}>
-            <div style={{margin: '1rem', width: '91%'}}>          
-                <h2>Contact Me</h2>
+            <div style={{margin: '1rem', width: '88%'}}>          
+                <h2 className={classes.title}>Contact Me</h2>
                 <div className={classes.contactInfoItem}>
                     <LocalPhoneIcon/>
                     <Typography className={classes.contactInfoItemValue}>(604) 358-2787</Typography>
