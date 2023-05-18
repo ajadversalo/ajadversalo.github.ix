@@ -1,7 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
-import HomeIcon from '@mui/icons-material/Home';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import Typography from '@mui/material/Typography';
@@ -143,8 +142,8 @@ function Contact(props) {
     }
 
     return(
-        <div className={classes.root}>
-            <div style={{margin: '1rem', width: '88%'}}>          
+        <div>
+            <div style={{margin: '1rem', padding: '0 1rem'}}>          
                 <h2 className={classes.title}>Contact Me</h2>
                 <div className={classes.contactInfoItem}>
                     <LocalPhoneIcon/>

@@ -81,7 +81,6 @@ const useStyles = makeStyles()(() => ({
         justifyContent: 'space-around'
     },
     drawer: {        
-        width: '40rem',
         backgroundColor: '#EEF0EB',
         color: '#FCFFFF'
     },
