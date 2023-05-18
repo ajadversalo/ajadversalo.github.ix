@@ -11,7 +11,7 @@ import emailjs from 'emailjs-com';
 const useStyles = makeStyles()(() => ({
     root: {
         width: '100%',
-        paddingTop: '1rem'
+        padding: '0 2rem 1rem 1rem',
     }, 
     contactInfoItem: {
         display: 'flex',
@@ -138,12 +138,8 @@ function Contact(props) {
 
     return(
         <div className={classes.root}>
-            <div style={{margin: '1rem', width: '92%'}}>          
-                <h1>Contact Me</h1>
-                <div className={classes.contactInfoItem}>
-                    <HomeIcon/>
-                    <Typography className={classes.contactInfoItemValue}>28-16016 82 Ave. Surrey, BC</Typography>
-                </div>
+            <div style={{margin: '1rem', width: '91%'}}>          
+                <h2>Contact Me</h2>
                 <div className={classes.contactInfoItem}>
                     <LocalPhoneIcon/>
                     <Typography className={classes.contactInfoItemValue}>(604) 358-2787</Typography>

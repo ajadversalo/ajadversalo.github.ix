@@ -9,20 +9,15 @@ import MuiAlert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import Tooltip from '@mui/material/Tooltip';
-import Card from '@mui/material/Card';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import Contact from './Contact';
 import Resume from './Resume';
+import ProjectsNew from './Projects';
 
 const useStyles = makeStyles()(() => ({
     root: {
@@ -85,21 +80,19 @@ const useStyles = makeStyles()(() => ({
         width: '100%',
         justifyContent: 'space-around'
     },
-    drawer: {
-        height: '100%',
+    drawer: {        
         width: '40rem',
-        //backgroundColor: '#EBEBEB'
-        backgroundColor: '#282C2F',
+        backgroundColor: '#455561',
         color: '#FCFFFF'
     },
     drawerNarrow: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#282C2F',
+        backgroundColor: '#455561',
         color: '#FCFFFF'
     },
     drawerHeader: {
-        backgroundColor: '#282C2F', 
+        backgroundColor: '#455561', 
         width: '100%', 
         overflow: 'overlay', 
         display: 'flex', 
@@ -108,8 +101,10 @@ const useStyles = makeStyles()(() => ({
         justifyContent: 'space-between'        
     },
     aboutRoot: {
-        padding: '1rem 1.5rem 1rem 1rem', 
-        paddingTop: '1rem'
+        padding: '0 1.5rem 1rem 1rem', 
+    },
+    projectRoot: {
+        padding: '0 1.5rem 1rem 0.5rem', 
     },
     name: {
         fontSize: 'calc(2rem + 2vw)', 
@@ -156,7 +151,7 @@ const useStyles = makeStyles()(() => ({
         fontWeight: 600
     },
     drawerPaper: {
-        backgroundColor: '#CED0CE',
+        backgroundColor: '#455561',
         '&::-webkit-scrollbar': {
             display: 'none'
         },
@@ -199,7 +194,6 @@ function App() {
     const [popupMsgType, setPopupMsgType] = useState('error');
     const [openPopup, setOpenPopup] = useState(false);
     const [height, setHeight] = useState(window.innerHeight);
-    const [expanded, setExpanded] = useState('panel1');
 
     useEffect(() => {
         document.title ='AJ - Full-Stack Dev';
@@ -219,11 +213,11 @@ function App() {
     
     const About = () => {
         return(
-            <div className={classes.aboutRoot}>            
-                <Avatar alt="AJAdversalo" src="face.jfif" />
+            <div className={classes.aboutRoot} style={{height: '100%'}}>            
                 <div style={{padding: '0 1rem'}}>
+                    <h2>About Me</h2>
                     <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
-                        opportinities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
+                        opportunities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
                         A month after completing the program in 2019, I was lucky enough to be hired at GenXys Healthcare Systems as a full-stack developer.</p>
                     <p>As a software developer, one of my key strengths is my attention to detail. I firmly believe that the little things 
                         matter, and I always strive to ensure that my code is clean, well-organized, and easy to maintain. Whether it be front-end 
@@ -233,121 +227,6 @@ function App() {
                         If you're interested in working with me, please don't hesitate to get in touch!
                     </p>
                 </div>
-            </div>
-        );
-    }
-
-    const Projects = () => {
-
-        const ProductCard = (props) => {            
-            return (
-                <div style={{display: 'flex', flexDirection: 'row'}}>
-                    <div style={{minWidth: '7rem', maxWidth: '7rem'}}>
-                        <Card style={{padding: '0.1rem 0.2rem', margin: '0.5rem 0.5rem'}}>
-                            <div style={{textAlign: 'center', paddingBottom: '0.2rem'}}>{props.title}</div>
-                            <img src={`./productImages/${props.image}`} style={{maxWidth: '100%'}}></img>
-                        </Card>
-                    </div>
-                    <div style={{fontSize: '0.7rem', minWidth: '10rem', maxWidth: '30rem', paddingTop: '0.5rem'}}>
-                        {props.desc}
-                    </div>
-                </div>
-
-            )
-        }
-
-        const productList = [
-            {
-                title: 'TreatGx', 
-                desc: 'TreatGx generates medication options that are safe and effective for you by combining your genetics with up-to-date clinical evidence and information that you enter.',
-                image: 'treatgx.jpg'
-            },                
-            {
-                title: 'ReviewGx', 
-                desc: 'ReviewGx is a Medication Therapy Management tool that looks at evidence-based pharmacogenomics, deprescribing insights and clinical lab data to help you perform comprehensive medication reviews.',
-                image: 'reviewgx.jpg'
-            },
-            {
-                title: 'Alogogen', 
-                desc: 'Algogen is an internal application used by the algorithm developers to create complex pharmacogenetic algorithms.',
-                image: 'algogen.jpg'
-            },
-            {
-                title: 'TrackGx', 
-                desc: 'TrackGx is mobile first application which allows patients to effortlessly monitor the efficacy of their prescriptions.',
-                image: 'trackgx.jpg'
-            },
-            {
-                title: 'LabGx', 
-                desc: 'LabGx enables uploading genetic data from laboratory results.',
-                image: 'labgx.jpg'
-            },         
-            {
-                title: 'Patient Dashboard', 
-                desc: 'The Patient Dashboard is the petient portal where they can see their lab reports and medication reviews.',
-                image: 'patientDashboard.jpg'
-            }
-        ];
-
-        // const productList = [
-        //     {title: 'TreatGx', desc: 'TreatGx generates medication options that are safe and effective for you by combining your genetics with up-to-date clinical evidence and information that you enter. TreatGx has been developed to facilitate the shared decision-making process between you and your healthcare professional.'},
-        //     {title: 'ReviewGx', desc: 'ReviewGx is a Medication Therapy Management tool that looks at evidence-based pharmacogenomics, deprescribing insights, clinical lab data and other patient-specific information to help you perform comprehensive medication reviews and keep patients safe and healthy.'},
-        //     {title: 'Alogogen', desc: 'Algogen is a powerful algorithmic generation tool that simplifies the process of creating pharmacogenetic algorithms. With its intuitive graphical interface for mapping entities and concepts, Algogen streamlines the algorithm development process. This application is exclusively designed for internal use by our experienced algorithm team, providing them with an efficient solution for generating complex algorithms.'},
-        //     {title: 'TrackGx', desc: 'TrackGx is an application which allows you to effortlessly monitor the efficacy of your prescriptions by inputting crucial information. With its mobile-first design, you can conveniently track how your medications are working anytime, anywhere.'},
-        //     {title: 'LabGx', desc: 'LabGx empowers healthcare providers to seamlessly integrate lab-reported genetic data into their clinical decision support systems. With LabGx, you can easily upload genetic data from laboratory reports, enabling more accurate and personalized treatment recommendations for patients.'},         
-        //     {title: 'Patient Dashboard', desc: ''}
-        // ];
-
-        // const Product = (props) => {
-        //     return(
-        //         <div style={{border: '1px solid #000', width: '6rem', textAlign: 'center', padding: '0.5rem', height: '1.5rem', margin: '1rem'}}>
-        //             <div style={{marginTop: props.title === 'Patient Dashboard' ? '-0.6rem' : 0}}>{props.title}</div>
-        //         </div>
-        //     );
-        // }
-
-        const handleChange = (panel) => (e, isExpanded) => {
-            if(panel === 'panel2'){
-                setExpanded(isExpanded ? 'panel2' : 'panel1');
-            }
-            if(panel === 'panel1'){
-                setExpanded(isExpanded ? 'panel1' : 'panel2');
-            }
-        };
-
-        return(
-            <div style={{paddingTop: '1rem', backgroundColor: '#FFF'}}>            
-                <div style={{paddingLeft: '1.5rem', margin: 0, textAlign: 'center'}}>
-                    <h2>Projects</h2>
-                </div>
-                <Accordion style={{backgroundColor: 'transparent', boxShadow: 'none'}} defaultExpanded={true}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <div style={{paddingLeft: '0.5rem', color: '#55828B'}}>GenXys Applications</div>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <div style={{fontSize: '0.8rem', paddingLeft: '0.5rem', paddingBottom: '1rem'}}>Together with 3 other developers, we've built several web applications for GenXys utilizing ReactJS, C#, .Net Core, MS SQL and Azure.</div>
-                        {productList.map((p) => {
-                            return (<ProductCard title={p.title} desc={p.desc} image={p.image}/>)
-                        })}
-                    </AccordionDetails>
-                </Accordion>
-                <Accordion style={{backgroundColor: 'transparent', boxShadow: 'none'}}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1b-content"
-                        id="panel1b-header"
-                        style={{borderBottom: '1px solid lightgrey'}}
-                    >
-                        <div style={{paddingLeft: '0.5rem', color: '#55828B'}}>Personal</div>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                    
-                    </AccordionDetails>
-                </Accordion>        
             </div>
         );
     }
@@ -428,7 +307,7 @@ function App() {
                         }
                     </div>
                     { page === 'about' && <About /> }
-                    { page === 'projects' && <Projects /> }
+                    { page === 'projects' && <ProjectsNew /> }
                     { page === 'contact' && 
                         <Contact                             
                             setOpenPopup={setOpenPopup}
