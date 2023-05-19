@@ -1,7 +1,5 @@
 import React from 'react';
 import { makeStyles } from 'tss-react/mui';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
 
 const useStyles = makeStyles()(() => ({
     root: {
@@ -69,17 +67,13 @@ const useStyles = makeStyles()(() => ({
     }
 }));
 
-function Resume(props) {
-    const {  } = props;
+function Resume() {
     const { classes } = useStyles();
-    const theme = useTheme();
-    const isSm = useMediaQuery(theme.breakpoints.down('sm'));
-    const ref = React.createRef();
         
     return(
         <div className={classes.root}>                        
             <div style={{paddingTop: '0.1rem'}}>                
-                <img  src={'resume.jpg'} style={{width: '100%'}}/>
+                <img  src={'resume.jpg'} style={{width: '100%'}} alt='resume'/>
             </div>
             {/*                              
             <div className={classes.paper} ref={ref}>

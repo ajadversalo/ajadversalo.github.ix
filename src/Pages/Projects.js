@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React from 'react';
 import { makeStyles } from 'tss-react/mui';
 import Card from '@mui/material/Card';
 import Accordion from '@mui/material/Accordion';
@@ -21,7 +21,7 @@ const useStyles = makeStyles()(() => ({
 function Projects() {
     const { classes } = useStyles();
 
-    const [expanded, setExpanded] = useState('panel1');
+    //const [/*expanded*/, setExpanded] = useState('panel1');
 
     const ProductCard = (props) => {            
         return (
@@ -29,7 +29,7 @@ function Projects() {
                 <div style={{minWidth: '7rem', maxWidth: '7rem'}}>
                     <Card style={{padding: '0.1rem 0.2rem', margin: '0.5rem 0.5rem'}}>
                         <div className={classes.contentText} style={{textAlign: 'center', paddingBottom: '0.2rem'}}>{props.title}</div>
-                        <img src={`./productImages/${props.image}`} style={{maxWidth: '100%'}}></img>
+                        <img src={`./productImages/${props.image}`} style={{maxWidth: '100%'}} alt={`${props.image}`}></img>
                     </Card>
                 </div>
                 <div className={classes.contentText} style={{fontSize: '0.8rem', minWidth: '10rem', maxWidth: '30rem', paddingTop: '0.5rem'}}>
@@ -73,14 +73,14 @@ function Projects() {
         }
     ];
 
-    const handleChange = (panel) => (e, isExpanded) => {
-        if(panel === 'panel2'){
-            setExpanded(isExpanded ? 'panel2' : 'panel1');
-        }
-        if(panel === 'panel1'){
-            setExpanded(isExpanded ? 'panel1' : 'panel2');
-        }
-    };
+    // const handleChange = (panel) => (e, isExpanded) => {
+    //     if(panel === 'panel2'){
+    //         setExpanded(isExpanded ? 'panel2' : 'panel1');
+    //     }
+    //     if(panel === 'panel1'){
+    //         setExpanded(isExpanded ? 'panel1' : 'panel2');
+    //     }
+    // };
 
     return(
         <div className={classes.root}>                                           

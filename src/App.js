@@ -15,18 +15,15 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import Tooltip from '@mui/material/Tooltip';
 
-import Contact from './Contact';
-import Resume from './Resume';
-import ProjectsNew from './Projects';
+import Contact from './Pages//Contact';
+import Resume from './Pages/Resume';
+import Projects from './Pages/Projects';
+import About from './Pages/About';
 
 const useStyles = makeStyles()(() => ({
     root: {
         textAlign: 'center',
         minWidth: '18rem'
-    },
-    title: {
-        fontSize: '5rem',
-        width: '39rem'
     },
     subTitle: {
         marginLeft: '70px',
@@ -96,7 +93,6 @@ const useStyles = makeStyles()(() => ({
         overflow: 'overlay', 
         display: 'flex', 
         flexDirection: 'row', 
-        justifyContent: 'start',
         justifyContent: 'space-between'        
     },
     aboutRoot: {
@@ -204,7 +200,7 @@ function App() {
     const [height, setHeight] = useState(window.innerHeight);
 
     useEffect(() => {
-        document.title ='AJ - Full-Stack Dev';
+        document.title ='AJ Adversalo';
     }, []);
 
     const getHeight = () => window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
@@ -218,29 +214,7 @@ function App() {
             window.removeEventListener('resize', resizeListener);
           }
     },[]);
-    
-    const About = () => {
-        return(
-            <div className={classes.aboutRoot} style={{height: '100%'}}>            
-                <div style={{padding: '0 1rem'}}>
-                    <h2 className={classes.title}>About Me</h2>
-                    <div className={classes.contentText}>
-                        <p>Hi, I'm AJ, I moved to Vancouver in 2016. I worked in IT for a bit until I realized the 
-                            opportunities in software development so I went ahead and took the Software Systems Developer(SSD) Program at BCIT.
-                            A month after completing the program in 2019, I was lucky enough to be hired at GenXys Healthcare Systems as a full-stack developer.</p>
-                        <p>As a software developer, one of my key strengths is my attention to detail. I firmly believe that the little things 
-                            matter, and I always strive to ensure that my code is clean, well-organized, and easy to maintain. Whether it be front-end 
-                            or back-end I always find ways to optimize code and improve my skills in the process.</p>    
-                        <p>Outside of work, I enjoy photography taking snaps here and there especially wide open sceneries.</p>
-                        <p>I strive to continue and keep learning new languages, frameworks and technologies to broaden my skills and be a better developer in general.
-                            If you're interested in working with me, please don't hesitate to get in touch!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-    
+        
     const handleClosePopup = () => {
         setOpenPopup(false);
     }
@@ -317,7 +291,7 @@ function App() {
                         }
                     </div>
                     { page === 'about' && <About /> }
-                    { page === 'projects' && <ProjectsNew /> }
+                    { page === 'projects' && <Projects /> }
                     { page === 'contact' && 
                         <Contact                             
                             setOpenPopup={setOpenPopup}
