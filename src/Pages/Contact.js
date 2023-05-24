@@ -16,7 +16,7 @@ const useStyles = makeStyles()(() => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        color: '#587792'
+        color: '#282C2F'
     },
     contactInfoItemValue: {
         textAlign: 'left',
@@ -26,7 +26,7 @@ const useStyles = makeStyles()(() => ({
     textBox: {
         width: '100%',
         margin: '0.5rem 0',
-        backgroundColor: '#EEF0EB',
+        backgroundColor: '#FCFFFF',
         borderRadius: 0
     },
     buttonSendRoot: {
@@ -40,17 +40,17 @@ const useStyles = makeStyles()(() => ({
     button :{
         marginTop: '1rem',
         padding: '0.5rem 1rem', 
-        color: '#587792', 
-        border: '2px solid #587792',
+        color: '#282C2F', 
+        border: '2px solid #282C2F',
         borderRadius: 0,
         fontFamily: 'Wix MadeFor Display',
-        backgroundColor: '#EEF0EB',
+        backgroundColor: '#FCFFFF',
         '&:hover': {
             backgroundColor: '#FFF'
         },
     },
     title:{
-        color: '#BB4430'
+        color: '#282C2F'
     },
     contentText: {
         color: '#587792'

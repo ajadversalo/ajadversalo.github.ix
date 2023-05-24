@@ -4,7 +4,10 @@ import { makeStyles } from 'tss-react/mui';
 const useStyles = makeStyles()(() => ({
     root: {
         padding: '0 0.5rem 0 0.5rem',
-        color: '#587792' 
+        color: '#B5B9BC' 
+    },
+    title: {
+        color: '#FCFFFF'
     }
 }));
 

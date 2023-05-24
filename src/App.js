@@ -78,17 +78,18 @@ const useStyles = makeStyles()(() => ({
         justifyContent: 'space-around'
     },
     drawer: {        
-        backgroundColor: '#EEF0EB',
-        color: '#FCFFFF'
+        backgroundColor: '#282C2F',
+        color: '#FCFFFF',
+        width: '40rem'
     },
     drawerNarrow: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#EEF0EB',
+        backgroundColor: '#282C2F',
         color: '#FCFFFF'
     },
     drawerHeader: {
-        backgroundColor: '#EEF0EB', 
+        backgroundColor: '#282C2F', 
         width: '100%', 
         overflow: 'overlay', 
         display: 'flex', 
@@ -146,7 +147,15 @@ const useStyles = makeStyles()(() => ({
         fontWeight: 600
     },
     drawerPaper: {
-        backgroundColor: '#EEF0EB',
+        backgroundColor: '#282C2F',
+        '&::-webkit-scrollbar': {
+            display: 'none'
+        },
+        // Firefox
+        scrollbarWidth: 'none'
+    },
+    drawerPaperContact: {
+        backgroundColor: '#FFF',
         '&::-webkit-scrollbar': {
             display: 'none'
         },
@@ -271,11 +280,10 @@ function App() {
                 open={open}
                 onClose={()=>{setOpen(false)}}
                 onOpen={()=>{setOpen(true)}}
-                style={{width:'100%' }}
-                classes={{ paper: classes.drawerPaper }}
+                classes={{ paper: page === 'contact' ? classes.drawerPaperContact : classes.drawerPaper }}                
             >
-                <div className={isSm ? classes.drawerNarrow : classes.drawer}>
-                    <div className={classes.drawerHeader}>
+                <div className={isSm ? classes.drawerNarrow : classes.drawer} style={page === 'contact' ? {backgroundColor: '#FCFFFF'} : {}}>
+                    <div className={classes.drawerHeader} style={page === 'contact' || page === 'resume' ? {backgroundColor: '#FCFFFF'} : {}}>
                         <IconButton 
                             onClick={()=>{setOpen(false); setPage('');}}
                             style={{paddingLeft: '0.8rem'}}                        

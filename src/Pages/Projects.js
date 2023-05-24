@@ -11,17 +11,15 @@ const useStyles = makeStyles()(() => ({
         padding: '0 0.5rem 0 0.5rem',
     },
     title:{
-        color: '#BB4430'
+        color: '#FCFFFF'
     },
     contentText: {
-        color: '#587792'
+        color: '#B5B9BC' 
     }
 }));
 
 function Projects() {
     const { classes } = useStyles();
-
-    //const [/*expanded*/, setExpanded] = useState('panel1');
 
     const ProductCard = (props) => {            
         return (
@@ -69,7 +67,7 @@ function Projects() {
         {
             title: 'Patient Dashboard', 
             desc: 'The Patient Dashboard is the petient portal where they can see their lab reports and medication reviews.',
-            image: 'patientDashboard.jpg'
+            image: 'pd.jpg'
         }
     ];
 
@@ -84,22 +82,23 @@ function Projects() {
 
     return(
         <div className={classes.root}>                                           
-            <h2 className={classes.title} style={{paddingLeft: '1.5rem', marginBottom: 0}}>Projects</h2>                
+            <h2 className={classes.title} style={{paddingLeft: '1.5rem', marginBottom: 0}}>My Projects</h2>                
             <Accordion style={{backgroundColor: 'transparent', boxShadow: 'none'}} defaultExpanded={true}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon style={{fill: '#FFF'}}/>}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <div className={classes.contentText} style={{paddingLeft: '0.5rem'}}>GenXys Applications</div>
+                    <div className={classes.title} style={{paddingLeft: '0.5rem'}}>At GenXys</div>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <div className={classes.contentText} style={{fontSize: '0.8rem', paddingLeft: '0.5rem', paddingBottom: '1rem'}}>Together with 3 other developers, we've built several web applications for GenXys utilizing ReactJS, C#, .Net Core, MS SQL and Azure.</div>
+                    <div className={classes.title} style={{fontSize: '0.8rem', paddingLeft: '0.5rem', paddingBottom: '1rem'}}>Below are a list of the web applications we've built at GenXys. We used ReactJS, Redux and Material UI for the Front-End and C#, .Net, REST, and SQL Server for the Back-End.</div>
                     {productList.map((p) => {
                         return (<ProductCard title={p.title} desc={p.desc} image={p.image}/>)
                     })}
                 </AccordionDetails>
             </Accordion>
+            {/*
             <Accordion style={{backgroundColor: 'transparent', boxShadow: 'none'}}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon style={{fill: '#FFF'}}/>}
@@ -112,6 +111,7 @@ function Projects() {
                 <AccordionDetails>                
                 </AccordionDetails>
             </Accordion>        
+            */}
         </div>
     );
 }
